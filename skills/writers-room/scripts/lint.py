@@ -59,7 +59,7 @@ MARKER_RE = re.compile(r"\[(?:LOOP|CLOSE|REHOOK|PAUSE|EMPHASIS|SLOW|MUSIC|SFX|"
 LOOP_RE = re.compile(r"\[LOOP:\s*([\w-]+)\s*\]", re.I)
 CLOSE_RE = re.compile(r"\[CLOSE:\s*([\w-]+)\s*\]", re.I)
 REHOOK_RE = re.compile(r"\[REHOOK\]", re.I)
-NEEDS_RE = re.compile(r"\[NEEDS (?:STORY|SOURCE)[^\]]*\]", re.I)
+NEEDS_RE = re.compile(r"\[NEEDS [A-Z]+[^\]]*\]")
 SPEAKER_RE = re.compile(r"^\s*(?:HOST(?: [A-Z])?|GUEST|[A-Z]{2,}):\s*", re.M)
 
 LIMITS = {

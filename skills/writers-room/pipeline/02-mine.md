@@ -10,7 +10,11 @@
 3. Pull **real questions** from the stories (customer words) for H2s and FAQ.
 4. List facts and numbers with their sources. Anything without a source goes under "Unverified: do not use as fact".
 5. Blogs, if you can browse: skim the top 5 results for the primary keyword. Write two lists: **"Everyone says"** (table stakes) and **"Nobody says"** (our information gain).
-6. If the story bank has nothing usable, write `[NEEDS STORY: <the kind of moment needed>]` and tell the user what to look for in their calls. Do not fill the gap with invention or a "composite" character.
+6. If the story bank has nothing usable:
+   - if the user lived the story (personal or portfolio pieces, their own projects), go back and run `00-interview.md`;
+   - otherwise write `[NEEDS STORY: <the kind of moment needed>]` and tell the user what to look for in their calls or records.
+
+   Never fill the gap with invention, a "composite" character, or sample answers for the user to pick from.
 
 ## Output format
 

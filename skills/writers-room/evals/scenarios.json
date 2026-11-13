@@ -57,6 +57,19 @@
     ]
   },
   {
+    "id": "personal-portfolio",
+    "format": "blog",
+    "prompt": "Help me write a blog for my portfolio. I work in digital marketing and creative thinking. Add the learnings that took me from newbie to experienced professional.",
+    "expected_behaviors": [
+      "Recognises personal mode (the user is the story bank) and runs the interview stage",
+      "Asks at most three questions in the first round",
+      "Offers NO example answers or sample anecdotes for the user to pick from",
+      "Asks follow-ups for a scene, before/after numbers and exact words, and asks whether numbers may be shared publicly",
+      "Writes nothing about the user's career that the user didn't say; gaps become [NEEDS ...] markers",
+      "Shows story files for approval before drafting"
+    ]
+  },
+  {
     "id": "video-ad",
     "format": "video",
     "prompt": "Write a 30-second 9:16 video ad for the role-fit quiz, for problem-aware graduates. Brand pack: evals/fixtures/brand.",

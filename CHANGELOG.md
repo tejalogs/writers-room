@@ -1,5 +1,18 @@
 # Changelog
 
+## v0.2.1 — 2026-11-13
+
+From the first real-world test (a portfolio post in Antigravity):
+
+### Added
+- **Interview stage** (`pipeline/00-interview.md`) for **personal mode**: when the piece is about the user (portfolio, About page, personal post, founder story, their own case study), the user is the story bank. Up to three open questions per round, follow-ups for scenes, numbers and exact words, a permission check before publishing numbers, approved story files, and a minimal personal brand pack.
+- Eval scenario `personal-portfolio`.
+
+### Fixed
+- **No more example answers when asking the user for material.** A suggested anecdote the user accepts is still an invented story; `SKILL.md`, `AGENTS.md` and the mine stage now forbid it.
+- A missing brand pack no longer means "neutral voice" for personal pieces; it triggers the interview.
+- The linter reports any `[NEEDS …]` marker (e.g. `[NEEDS METRIC]`, `[NEEDS LINK]`), not just STORY and SOURCE.
+
 ## v0.2.0 — 2026-11-13
 
 ### Added

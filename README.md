@@ -218,7 +218,7 @@ The craft comes from the masters of non-fiction. The mechanics come from researc
 
 ## Prove it on your own model
 
-[`evals/RUNNING.md`](skills/writers-room/evals/RUNNING.md) has seven scenarios (blog, podcast, social, video ad, landing page, and "no material: must not invent"), a fictional brand pack, and `compare.py` to compare lint results with and without the skill across model sizes.
+[`evals/RUNNING.md`](skills/writers-room/evals/RUNNING.md) has eight scenarios (blog, podcast, social, video ad, landing page, personal portfolio, and "no material: must not invent"), a fictional brand pack, and `compare.py` to compare lint results with and without the skill across model sizes.
 
 ---
 

@@ -65,6 +65,11 @@ class SharedChecks(unittest.TestCase):
         f = lint("Stat here. [NEEDS SOURCE: callback rate] More text follows.", "podcast", BANNED, {})
         self.assertIn("needs-marker", checks(f, "INFO"))
 
+    def test_any_needs_marker_reported(self) -> None:
+        f = lint("Clicks rose. [NEEDS METRIC: before/after CTR] Then [NEEDS LINK: case study].",
+                 "podcast", BANNED, {})
+        self.assertEqual(sum(1 for x in f if x.check == "needs-marker"), 2)
+
     def test_brand_rules(self) -> None:
         brand = {
             "brand_name": "Acme Learning",
