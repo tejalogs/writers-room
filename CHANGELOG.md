@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## v0.2.0 — 2026-11-13
 
 ### Added
 - **Ads** (`craft/ads-structure.md`): awareness levels, platform anatomy and limits (Google RSA, Meta, LinkedIn), ad patterns, variant matrices, and policy guardrails (personal attributes, health, finance, jobs, fake urgency).
@@ -12,7 +12,7 @@
 - Intake menu, brief and package stage cover ads, landing pages and video.
 
 ### Fixed
-- README: `npx skills add` needs Node.js 22.20+ (skills CLI v1.8.1 fails on Node 20). Added a dependency-free one-line install via `git clone`, tested in Antigravity.
+- Install no longer depends on Node.js: new `install.sh` (`curl … | bash`) installs into `.agents/skills/`, `~/.claude/skills/` (`--claude`) or any path, using git or curl + tar, and backs up existing installs. The skills CLI (`npx skills add`) needs Node.js 22.20+ (all versions since 1.5), which the README now says.
 
 ## v0.1.0 — 2026-11-13
 
@@ -51,4 +51,4 @@ First public release.
 - Teaching examples are drawn mostly from one domain (careers); more domains are planned.
 - No published baseline eval results yet. Run `evals/RUNNING.md` on your own models.
 - No dedicated ad, landing-page or video-ad format yet.
-(The domain and format limitations are addressed in Unreleased.)
+(The domain and format limitations are addressed in v0.2.0.)

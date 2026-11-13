@@ -82,18 +82,17 @@ Every stage saves its output, so you can review the angle and outline before a s
 
 ## Install
 
-**Any agent, via the skills CLI** (needs Node.js 22.20 or newer; check with `node -v`)
+**One command, any agent, no Node.js needed**
+```bash
+curl -fsSL https://raw.githubusercontent.com/tejalogs/writers-room/main/install.sh | bash
+```
+This installs into this project's `.agents/skills/` (Antigravity, Codex, Gemini CLI). Add `-s -- --claude` to install for Claude Code (`~/.claude/skills/`), or `-s -- --path DIR` for anywhere else. It needs only bash plus git or curl, and backs up any existing install. [Read the script](install.sh) before piping it to bash.
+
+**Via the skills CLI** (needs Node.js 22.20 or newer; check with `node -v`)
 ```bash
 npx skills add tejalogs/writers-room
 ```
-
-On older Node it fails with a `styleText` error. Upgrade Node, or use this instead:
-
-**No Node, or an older version? One command, no dependencies**
-```bash
-git clone --depth 1 https://github.com/tejalogs/writers-room /tmp/writers-room && mkdir -p .agents/skills && cp -r /tmp/writers-room/skills/writers-room .agents/skills/
-```
-This installs the skill into the current project's `.agents/skills/` folder, which Antigravity, Codex and Gemini CLI read. For Claude Code, use `~/.claude/skills/` instead.
+On older Node (for example 20.x) the skills CLI fails with a `styleText` error, because every recent version of it requires Node 22.20+. Use the one-command install above instead, or upgrade Node.
 
 **Claude Code plugin**
 ```text
