@@ -86,6 +86,7 @@ Every stage saves its output, so you can review the angle and outline before a s
 ```bash
 npx skills add tejalogs/writers-room
 ```
+Needs Node.js 22.20 or newer (`node -v`). On older Node it fails with a `styleText` error; upgrade Node or use the manual install below, which does the same thing.
 
 **Claude Code plugin**
 ```text
