@@ -90,6 +90,7 @@ Delivery formats: 9:16 for Reels, Shorts, TikTok and Stories; 4:5 or 1:1 for fee
 
 ## 6. On-screen text and voice-over
 
+- **Persistent supers and legal lines** ("Dramatisation", disclaimers, "Terms apply") and the end-card URL don't count toward the word limit. Put persistent supers in a note directly under the table, not in a row.
 - **On-screen text:** 8 words or fewer per card, on screen long enough to read twice (roughly 1.5 s minimum). It should *add* to the voice-over, not caption it word for word (burned-in captions are a separate, full-transcript layer).
 - **Voice-over pace:** about 2–2.5 words per second (130–150 wpm) is comfortable. Above ~2.7 words per second, cut words, not pauses. The linter warns on this.
 - **VO for the ear:** every rule in `podcast-structure.md` applies: short sentences, one idea each, numbers said simply.

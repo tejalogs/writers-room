@@ -42,4 +42,4 @@
 
 ## Learning-loop row
 
-Add a pending row to the brand's `evals/performance-log.csv` with slug, format, angle type, storytelling device, hook type, publish date (blank until live). Leads, signups or sales and brand mentions are filled in later, from the brand's analytics.
+Add a pending row to the brand's `evals/performance-log.csv` with slug, format, angle type, storytelling device, hook type, publish date (blank until live). Leads, signups or sales and brand mentions are filled in later, from the brand's analytics. If the brand pack has no `evals/performance-log.csv` (or you can't write to it), put the row at the end of `package.md` and tell the user where to paste it.

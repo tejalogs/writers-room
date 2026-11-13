@@ -21,7 +21,7 @@ Open-ended "critique and improve this" loops show no reliable gain, and a model 
 - Any claim that overreaches the evidence ("always", "guaranteed", "everyone")?
 - Any compliance rule from `BRAND.md` broken?
 - Any vague attribution ("experts say", "studies show") with no named source?
-- Any frequency claim ("most people", "almost nobody", "everyone") without evidence? Any invented thought or feeling attributed to a real person? Any first-person experience not in the story bank or author bio? (Check the repurposed social cuts in the package too.)
+- Any frequency claim ("most people", "almost nobody", "everyone") without evidence? Any invented thought or feeling attributed to a real person? Any first-person experience not in the story bank or author bio (including facts lifted from the brand's voice samples)? Any sentence that narrates a gap to the reader ("I don't have a story for this") instead of leaving a marker? (Check the repurposed social cuts in the package too.)
 - **Protected content (after polish):** does every story-bank quote, every `[NEEDS ...]` marker and every link from the draft survive into `final.md` unchanged, unless deliberately removed with a note?
 Score 5 only if there is nothing to check. Any invention = 1.
 

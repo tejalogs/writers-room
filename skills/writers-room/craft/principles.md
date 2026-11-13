@@ -17,6 +17,8 @@ The same goes for claims about a product: **show, don't declare.**
 - Declared: "Our platform provides excellent career guidance."
 - Shown: "See which roles match what you can already do, where your skills fall short, and what to practise first."
 
+(Illustrative, for an imaginary careers product. Describe only features your brand pack or the user has confirmed.)
+
 ## 3. One piece, one idea
 Before drafting, write the **spine sentence**: the single idea the piece exists to land, in 20 words or fewer. Cut everything that doesn't serve it, however good. A piece that says three things says nothing.
 

@@ -12,7 +12,7 @@
 4. **Sharpen the quote-test line.** Find the one line someone would repeat. Make it shorter and give it its own paragraph.
 5. **Check the callback.** The close returns to the opening image, now seen differently.
 6. **Run the linter again.** Zero errors.
-7. Blogs: strip loop markers. Podcasts: keep all markers (production script).
+7. Blogs, social posts, ads and video A/V tables: strip loop markers. Podcasts: keep all markers (production script).
 8. Write a separate `review.md` for the user (never put notes inside `final.md`: anything above the frontmatter breaks the blog lint and publishing). List every remaining `[NEEDS ...]` item (and remove those markers from the body of a blog `final.md`), every story id used, every claim that needs a fact check, and the ship status (which critics are below 4 and what would lift them).
 
 ## Gate

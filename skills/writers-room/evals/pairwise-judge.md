@@ -4,6 +4,8 @@ Models are inconsistent at scoring things out of 10, but better at "A or B?". Us
 
 **Who may judge:** a large model (frontier class) or a human. In LitBench (2,480 human-labelled pairs), large models agreed with human readers ~70–73% of the time; 7–8B models only ~58–60%, close to chance. If you are a small model, generate the options and stop: don't run this bracket yourself.
 
+**No second model available?** If you drafted the options and nobody else can judge, don't quietly judge yourself. Show the user your top 2–3 options with a one-line case for each and let them pick. If they'd rather you pick, say in `review.md` that the choice was self-judged.
+
 **Verdict first, short reason after.** In the same study, asking the judge to reason at length before its verdict *lowered* accuracy. Keep the one-line format below.
 
 ## Prompt (use verbatim, one pair per call)

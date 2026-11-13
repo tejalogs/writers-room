@@ -1,5 +1,20 @@
 # Changelog
 
+## Unreleased
+
+From an end-to-end audit (fresh agents running the portfolio, no-material and video-ad scenarios):
+
+### Fixed
+- **Anonymiser privacy gaps:** bare-domain URLs (`linkedin.com/in/someone`) were not removed; a first name alone ("Meera") got a different tag from the full name ("Meera Rao"), so one person read as two.
+- **Linter:** `[NEEDS …]` markers no longer count toward sentence length.
+- **Draft stage:** don't narrate missing material to the reader; voice samples supply rhythm, never facts; fixed-length formats write variants instead of over-length drafts.
+- **Product facts:** the mine stage now collects what the product actually does, with `[NEEDS PRODUCT]` for unknowns, so ads never describe screens or results nobody confirmed.
+- **Judging fallback:** with no second model, show the user the top options instead of self-judging silently.
+- Video: persistent supers and legal lines don't count toward on-screen text limits; loop markers are stripped from final A/V tables.
+- Hooks: "at least 5 types" now reads "or as many as the material honestly supports (minimum 3)".
+- Brand template: an implied-promise rule ("you'll get…") alongside "guarantee".
+- Docs: contents for `masters.md`, `watch-words.txt` kept out of drafting, the illustrative label on the principles example, and the "nobody tells you" frequency claim removed from an "after" example.
+
 ## v0.2.1 — 2026-11-13
 
 From the first real-world test (a portfolio post in Antigravity):

@@ -72,4 +72,4 @@ Ads face legal and platform rules on top of the brand's own. **When in doubt, ch
 - **Finance:** no guaranteed returns, no "get rich" framing, and representative examples and risk warnings where your regulator requires them (e.g. FCA in the UK). Credit, loans and crypto have special policies.
 - **Jobs, housing and credit:** many platforms restrict targeting and wording to prevent discrimination; never imply who may or may not apply.
 - **No fake urgency or scarcity** ("only 2 left!" when there aren't), no fake reviews, no invented testimonials, no actors presented as real customers.
-- **Brand rules:** mirror every compliance rule as a `banned_terms` entry in `brand.json` so the linter catches it.
+- **Brand rules:** mirror every compliance rule as a `banned_terms` entry in `brand.json` so the linter catches it. Cover the implied versions too, not just the obvious word: "guarantee" is easy, but "you'll get interviews" makes the same promise. The template's `brand.json` shows a pattern for both.

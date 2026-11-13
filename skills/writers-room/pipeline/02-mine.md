@@ -8,6 +8,7 @@
 1. Search the story bank by tags matching the audience segment, belief and topic. Pull **3–8 candidate stories**.
 2. For each, copy: story id, the best verbatim line, the concrete detail, the belief, the turning point.
 3. Pull **real questions** from the stories (customer words) for H2s and FAQ.
+3b. **Product facts (when the piece promotes a product or offer).** Collect what the product actually does and what the customer sees: the screens or steps, what they get at the end, how long it takes, the price, who it's for. Take them from the brand pack or ask the user with open questions. Anything unknown becomes `[NEEDS PRODUCT: what's missing]`. Never describe a screen, result or feature you haven't been told about.
 4. List facts and numbers with their sources. Anything without a source goes under "Unverified: do not use as fact".
 5. Blogs, if you can browse: skim the top 5 results for the primary keyword. Write two lists: **"Everyone says"** (table stakes) and **"Nobody says"** (our information gain).
 6. If the story bank has nothing usable:

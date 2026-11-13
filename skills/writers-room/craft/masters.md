@@ -4,6 +4,12 @@ This is a distillation of **techniques**, in our own words, from writers and tea
 
 Each entry: **the move**, **why it works**, and **how to use it here**.
 
+## Contents
+1. Structure and story: McPhee, Ira Glass, Gladwell, Michael Lewis, Larson/Hillenbrand, Tom Wolfe, Jack Hart, Sarah Koenig
+2. Clarity and style: Zinsser, Orwell, Pinker, Roy Peter Clark, the Heath brothers, Housel, Paul Graham, Feynman
+3. Persuasion: Sugarman, Schwartz, Ogilvy
+4. Further reading
+
 ---
 
 ## Structure and story

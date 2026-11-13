@@ -50,4 +50,4 @@ Output JSON-LD in `package.md`; never invent fields (e.g. ratings) the page does
 ## 5. After publishing (feeds the learning loop)
 
 - Request indexing; add the post to the sitemap and, if the brand has one, `llms.txt`.
-- At 14 and 60 days, log in `evals/performance-log.csv`: impressions, clicks, average position, AI citations observed (ask the major assistants the target questions and note who gets cited).
+- At 14 and 60 days, log in the brand pack's `evals/performance-log.csv`: impressions, clicks, average position, AI citations observed (ask the major assistants the target questions and note who gets cited).

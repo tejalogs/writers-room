@@ -122,6 +122,7 @@ def clean_prose(body: str) -> str:
     text = "\n".join(prose_lines(body))
     text = SPEAKER_RE.sub("", text)
     text = strip_markers(text)
+    text = NEEDS_RE.sub("", text)
     text = re.sub(r"[*_`]", "", text)
     text = re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", text)
     return text

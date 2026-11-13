@@ -22,6 +22,11 @@ class PatternTests(unittest.TestCase):
         out = anonymize("My profile is https://linkedin.com/in/someone ok").text
         self.assertIn("[URL]", out)
 
+    def test_bare_domain_profile_url_removed(self) -> None:
+        out = anonymize("My LinkedIn is linkedin.com/in/meerarao-test and that's it.").text
+        self.assertNotIn("meerarao", out)
+        self.assertIn("[URL]", out)
+
     def test_uk_postcode_removed(self) -> None:
         self.assertIn("[POSTCODE]", anonymize("I live near SW1A 1AA now").text)
 
@@ -42,6 +47,11 @@ class NameTests(unittest.TestCase):
 
     def test_same_name_gets_same_tag(self) -> None:
         out = anonymize("Rahul called. Later rahul emailed.", names=("Rahul",)).text
+        self.assertEqual(out.count("[NAME_1]"), 2)
+
+    def test_first_name_shares_full_name_tag(self) -> None:
+        out = anonymize("Meera Rao: Hi.\nAgent: Thanks Meera.").text
+        self.assertNotIn("[NAME_2]", out)
         self.assertEqual(out.count("[NAME_1]"), 2)
 
     def test_intro_name_discovered(self) -> None:

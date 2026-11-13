@@ -52,7 +52,7 @@ If the user pasted a draft and asks for a rewrite or critique, start at stage 6 
 7. `craft/masters.md` — the techniques behind all of the above; read it at the angle and outline stages.
 8. If present: the brand's `evals/what-works.md` (what has performed for this audience).
 
-**Do not load `craft/word-craft.md` or `craft/banned-phrases.txt` while drafting.** Telling a model which words to avoid barely works and can backfire: the forbidden words get primed (the Antislop paper, ICLR 2026, calls it the "pink elephant" effect). Draft from the examples; catch the slop afterwards with the linter and the revise loop in stage 7.
+**Do not load `craft/word-craft.md`, `craft/banned-phrases.txt` or `craft/watch-words.txt` while drafting.** Telling a model which words to avoid barely works and can backfire: the forbidden words get primed (the Antislop paper, ICLR 2026, calls it the "pink elephant" effect). Draft from the examples; catch the slop afterwards with the linter and the revise loop in stage 7.
 
 ## Step 2: run the pipeline (every stage, in order; never jump to drafting)
 

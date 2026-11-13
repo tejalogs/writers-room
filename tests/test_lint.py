@@ -65,6 +65,11 @@ class SharedChecks(unittest.TestCase):
         f = lint("Stat here. [NEEDS SOURCE: callback rate] More text follows.", "podcast", BANNED, {})
         self.assertIn("needs-marker", checks(f, "INFO"))
 
+    def test_needs_markers_do_not_count_toward_sentence_length(self) -> None:
+        marker = "[NEEDS STORY: a nurse, any specialty, who moved into a healthcare data role, in their own words, with dates]"
+        text = ("Short one here. " * 8) + f"She made the switch {marker} last spring."
+        self.assertNotIn("long-sentence", checks(lint(text, "podcast", BANNED, {})))
+
     def test_any_needs_marker_reported(self) -> None:
         f = lint("Clicks rose. [NEEDS METRIC: before/after CTR] Then [NEEDS LINK: case study].",
                  "podcast", BANNED, {})

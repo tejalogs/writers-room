@@ -22,7 +22,7 @@ Sections 1 and 2 use one domain (job hunting) so you can follow a single thread.
 
 ### Opening of a blog
 **Before:** Networking is an important part of career development. In this article, we will explore why networking matters and share some tips to help you build meaningful professional connections.
-**After:** The best job he ever got came from a man he'd met once, at a bus stop, in the rain. They talked for six minutes. That's the uncomfortable truth about hiring: most good jobs move through people before they reach a job board, and nobody tells you which people.
+**After:** The best job he ever got came from a man he'd met once, at a bus stop, in the rain. They talked for six minutes. That's the uncomfortable truth about hiring: good jobs often move through people before they reach a job board, and no job board will tell you which people.
 **The move:** a scene first; the claim second, stated plainly; an open loop at the end ("which people").
 
 ### Generic paragraph → specific

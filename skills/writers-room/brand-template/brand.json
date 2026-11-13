@@ -8,6 +8,11 @@
       "pattern": "\\bguarantee(d|s)?\\b",
       "reason": "Never promise guaranteed outcomes",
       "severity": "ERROR"
+    },
+    {
+      "pattern": "\\byou(?:'ll| will) (?:get|land|be offered|secure)\\b",
+      "reason": "Implied outcome promise: rephrase as what the product does, not what the reader will get",
+      "severity": "WARN"
     }
   ]
 }
