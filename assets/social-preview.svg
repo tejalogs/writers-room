@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640" width="1280" height="640">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0E1116"/>
+      <stop offset="1" stop-color="#161B22"/>
+    </linearGradient>
+    <pattern id="lines" width="1280" height="32" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="31.5" x2="1280" y2="31.5" stroke="#FFFFFF" stroke-opacity="0.035"/>
+    </pattern>
+  </defs>
+  <rect width="1280" height="640" fill="url(#bg)"/>
+  <rect width="1280" height="640" fill="url(#lines)"/>
+
+  <!-- left: title block -->
+  <rect x="96" y="150" width="8" height="300" rx="4" fill="#F5B841"/>
+  <text x="138" y="196" font-family="Menlo, ui-monospace, Consolas, monospace" font-size="24" letter-spacing="5" fill="#F5B841">AN AGENT SKILL FOR NON-FICTION</text>
+  <text x="132" y="310" font-family="Georgia, 'Times New Roman', serif" font-size="94" font-weight="700" fill="#FFFFFF">Writers' Room</text>
+  <text x="138" y="376" font-family="-apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="36" fill="#C9D1D9">Podcast scripts, blogs and posts</text>
+  <text x="138" y="422" font-family="-apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="36" fill="#C9D1D9">that hold people.</text>
+
+  <!-- tags -->
+  <g font-family="-apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="22" fill="#C9D1D9">
+    <rect x="138" y="476" width="104" height="44" rx="22" fill="#FFFFFF" fill-opacity="0.06" stroke="#FFFFFF" stroke-opacity="0.14"/>
+    <text x="190" y="505" text-anchor="middle">Hooks</text>
+    <rect x="254" y="476" width="150" height="44" rx="22" fill="#FFFFFF" fill-opacity="0.06" stroke="#FFFFFF" stroke-opacity="0.14"/>
+    <text x="329" y="505" text-anchor="middle">Narrative</text>
+    <rect x="416" y="476" width="132" height="44" rx="22" fill="#FFFFFF" fill-opacity="0.06" stroke="#FFFFFF" stroke-opacity="0.14"/>
+    <text x="482" y="505" text-anchor="middle">Zero slop</text>
+    <rect x="560" y="476" width="150" height="44" rx="22" fill="#F5B841" fill-opacity="0.12" stroke="#F5B841" stroke-opacity="0.6"/>
+    <text x="635" y="505" text-anchor="middle" fill="#F5B841">SEO + AEO</text>
+  </g>
+
+  <!-- right: pipeline card -->
+  <g transform="translate(944 150)" font-family="Menlo, ui-monospace, Consolas, monospace" font-size="22">
+    <rect width="240" height="300" rx="16" fill="#FFFFFF" fill-opacity="0.04" stroke="#FFFFFF" stroke-opacity="0.12"/>
+    <circle cx="28" cy="28" r="6" fill="#FFFFFF" fill-opacity="0.18"/>
+    <circle cx="48" cy="28" r="6" fill="#FFFFFF" fill-opacity="0.18"/>
+    <circle cx="68" cy="28" r="6" fill="#FFFFFF" fill-opacity="0.18"/>
+    <text x="28" y="84" fill="#8B949E">01 brief</text>
+    <text x="28" y="118" fill="#8B949E">02 mine</text>
+    <text x="28" y="152" fill="#F5B841">03 angle</text>
+    <rect x="152" y="134" width="12" height="24" fill="#F5B841"/>
+    <text x="28" y="186" fill="#8B949E">04 outline</text>
+    <text x="28" y="220" fill="#8B949E">05 draft</text>
+    <text x="28" y="254" fill="#8B949E">06 critique …</text>
+  </g>
+
+  <!-- footer -->
+  <text x="1184" y="580" text-anchor="end" font-family="Menlo, ui-monospace, Consolas, monospace" font-size="22" fill="#8B949E">github.com/tejalogs/writers-room</text>
+</svg>
