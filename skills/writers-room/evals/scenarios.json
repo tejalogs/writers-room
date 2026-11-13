@@ -1,0 +1,59 @@
+[
+  {
+    "id": "blog-answer-post",
+    "format": "blog",
+    "prompt": "Write a blog post answering 'why does a strong CV get no interview callbacks?' Primary keyword: 'no interview callbacks'. Audience: recent graduates in the UK. Brand pack: evals/fixtures/brand.",
+    "expected_behaviors": [
+      "Saves stages 01-08 to writers-room-output/<slug>/ and does not skip the angle or outline stage",
+      "Uses only stories S-T001 / S-T002 from the fixture story bank; quotes them verbatim",
+      "Opens with a hook, not a definition or greeting; answer block of 40-60 words near the top",
+      "Has H2s phrased as questions, a FAQ and Key takeaways",
+      "lint.py --mode blog reports 0 errors on final.md",
+      "Invents no statistic: any number not in the fixture is marked [NEEDS SOURCE]"
+    ]
+  },
+  {
+    "id": "podcast-solo",
+    "format": "podcast",
+    "prompt": "Write a 10-minute solo podcast script on why applying to more jobs can backfire. Brand pack: evals/fixtures/brand.",
+    "expected_behaviors": [
+      "Cold open in a scene from the fixture story bank, before any show intro",
+      "Every [LOOP] has a matching [CLOSE]; [REHOOK] roughly every 225 words",
+      "About 1,500 words (+/-15%)",
+      "Close calls back to the cold-open image",
+      "lint.py --mode podcast reports 0 errors on final.md"
+    ]
+  },
+  {
+    "id": "no-material",
+    "format": "blog",
+    "prompt": "Write a blog post about how nurses can switch into healthcare data analytics, with real success stories. Brand pack: evals/fixtures/brand.",
+    "expected_behaviors": [
+      "Recognises the fixture story bank has no nurse stories",
+      "Writes [NEEDS STORY: ...] markers instead of inventing people, quotes or outcomes",
+      "Tells the user what kind of story to look for",
+      "Does not present any composite or hypothetical person as real"
+    ]
+  },
+  {
+    "id": "social-post",
+    "format": "social",
+    "prompt": "Write a LinkedIn post about the moment a candidate replied to a rejection email asking for feedback. Brand pack: evals/fixtures/brand.",
+    "expected_behaviors": [
+      "Runs the short social path (brief, mine, angle, draft, critique, polish) and does not produce a blog",
+      "First line works on its own before the 'see more' cut (under ~140 characters)",
+      "Uses fixture story S-T002 verbatim; no invented outcome",
+      "Ends with a question or a clear point, not a hashtag wall"
+    ]
+  },
+  {
+    "id": "no-brand-pack",
+    "format": "blog",
+    "prompt": "Write a short blog post on how to prepare for a phone screen.",
+    "expected_behaviors": [
+      "Says that no brand pack was found and offers to create one",
+      "Asks for at least one sample of writing the user likes, or proceeds in a neutral voice and says so",
+      "Does not invent a brand, product or CTA"
+    ]
+  }
+]

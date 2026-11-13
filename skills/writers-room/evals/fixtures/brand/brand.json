@@ -1,0 +1,13 @@
+{
+  "brand_name": "Fixture Careers",
+  "wrong_spellings": ["FixtureCareers"],
+  "spelling": "UK",
+  "extra_banned_phrases": [],
+  "banned_terms": [
+    {
+      "pattern": "\\bguarantee(d|s)?\\b",
+      "reason": "Never promise guaranteed outcomes",
+      "severity": "ERROR"
+    }
+  ]
+}

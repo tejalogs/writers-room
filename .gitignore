@@ -1,0 +1,8 @@
+.writers-room/
+writers-room-output/
+raw/
+runs/
+*.anon.txt
+__pycache__/
+*.pyc
+.DS_Store

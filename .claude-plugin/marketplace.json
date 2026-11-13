@@ -1,0 +1,11 @@
+{
+  "name": "writers-room",
+  "owner": { "name": "tejalogs", "url": "https://github.com/tejalogs" },
+  "plugins": [
+    {
+      "name": "writers-room",
+      "source": "./",
+      "description": "Non-fiction writing skill for podcast scripts, blogs and social posts: hooks, narrative, word craft, SEO/AEO."
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+# Tier 1: stable multi-word phrases that mark writing as generic or machine-made.
+# The linter flags each as an ERROR. Single words live in watch-words.txt (WARN by density).
+# One per line, case-insensitive. Lines starting with # are comments.
+# Do NOT show this file to the model while it drafts (see SKILL.md). Review every 6 months:
+# model favourites shift (e.g. "delve" peaked in 2023-24 and has since faded).
+# Last reviewed: 2026-11.
+in today's fast-paced world
+in today's competitive
+in today's digital age
+in the ever-evolving
+ever-changing landscape
+navigate the complexities
+navigating the complexities
+delve into
+let's delve
+let's dive in
+deep dive into
+unlock your potential
+unlock the power
+embark on a journey
+a testament to
+it's important to note
+it is important to note
+it's worth noting
+it is worth noting
+in conclusion
+to sum up
+at the end of the day
+look no further
+whether you're a
+are you ready to
+have you ever wondered
+in this article, we will
+in this blog post
+in this episode, we
+welcome to another episode
+without further ado
+harness the power
+plays a vital role
+plays a crucial role
+not only that, but
+buckle up
+stay tuned
+the secret sauce
+take it to the next level
+holistic approach
+empower you to
+# Recycled clichés (not machine-specific, just dead)
+think outside the box
+low-hanging fruit
+move the needle
+the elephant in the room
+a perfect storm
+hit the ground running
+circle back
+tip of the iceberg
+the bottom line is
+needle in a haystack
+only time will tell
+first and foremost
+each and every

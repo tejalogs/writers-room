@@ -1,0 +1,47 @@
+# Tier 2: single words that are fine once but signal machine prose when they pile up.
+# The linter WARNs when these exceed ~2 per 1,000 words, or when one repeats.
+# Density matters more than any one word (Wikipedia, "Signs of AI writing").
+# Do NOT show this file to the model while it drafts. Review every 6 months. Last reviewed: 2026-11.
+delve
+delves
+landscape
+navigate
+navigating
+tapestry
+robust
+seamless
+seamlessly
+unlock
+unleash
+elevate
+leverage
+crucial
+pivotal
+paramount
+realm
+myriad
+plethora
+testament
+transformative
+revolutionize
+revolutionise
+cutting-edge
+game-changer
+game-changing
+supercharge
+synergy
+furthermore
+moreover
+journey
+empower
+foster
+intricate
+nuanced
+multifaceted
+vibrant
+meticulous
+meticulously
+showcase
+underscore
+underscores
+bustling

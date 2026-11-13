@@ -1,0 +1,10 @@
+{
+  "name": "writers-room",
+  "version": "0.1.0",
+  "description": "Write non-fiction podcast scripts, blogs and social posts with world-class hooks, narrative, fresh language and SEO/AEO structure, using a staged pipeline, critic panel and linter.",
+  "author": { "name": "tejalogs", "url": "https://github.com/tejalogs" },
+  "homepage": "https://github.com/tejalogs/writers-room",
+  "repository": "https://github.com/tejalogs/writers-room",
+  "license": "MIT",
+  "keywords": ["writing", "podcast", "blog", "copywriting", "seo", "aeo", "storytelling", "ai-slop", "agent-skills"]
+}
