@@ -11,6 +11,9 @@
 - Critic panel: Director (video), Media Buyer (ads) and Conversion Editor (landing pages).
 - Intake menu, brief and package stage cover ads, landing pages and video.
 
+### Fixed
+- README: `npx skills add` needs Node.js 22.20+ (skills CLI v1.8.1 fails on Node 20). Added a dependency-free one-line install via `git clone`, tested in Antigravity.
+
 ## v0.1.0 — 2026-11-13
 
 First public release.

@@ -82,11 +82,16 @@ Every stage saves its output, so you can review the angle and outline before a s
 
 ## Install
 
-**Any agent, via the skills CLI**
+**Any agent, via the skills CLI** (needs Node.js 22.20 or newer; check with `node -v`)
 ```bash
 npx skills add tejalogs/writers-room
 ```
-Needs Node.js 22.20 or newer (`node -v`). On older Node it fails with a `styleText` error; upgrade Node or use the manual install below, which does the same thing.
+
+**No Node, or an older version? One command, no dependencies**
+```bash
+git clone --depth 1 https://github.com/tejalogs/writers-room /tmp/writers-room && mkdir -p .agents/skills && cp -r /tmp/writers-room/skills/writers-room .agents/skills/
+```
+This installs the skill into the current project's `.agents/skills/` folder, which Antigravity, Codex and Gemini CLI read. For Claude Code, use `~/.claude/skills/` instead.
 
 **Claude Code plugin**
 ```text
@@ -98,7 +103,7 @@ Needs Node.js 22.20 or newer (`node -v`). On older Node it fails with a `styleTe
 ```bash
 git clone https://github.com/tejalogs/writers-room
 cp -r writers-room/skills/writers-room ~/.claude/skills/     # Claude Code
-cp -r writers-room/skills/writers-room .agents/skills/       # Codex, Gemini CLI, Antigravity
+cp -r writers-room/skills/writers-room .agents/skills/       # Codex, Gemini CLI, Antigravity (this project)
 ```
 
 **Cursor, Copilot and other AGENTS.md agents:** clone into your project; [`AGENTS.md`](AGENTS.md) points the agent at the skill.
