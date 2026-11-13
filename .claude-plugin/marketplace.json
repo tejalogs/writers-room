@@ -1,6 +1,9 @@
 {
   "name": "writers-room",
   "owner": { "name": "tejalogs", "url": "https://github.com/tejalogs" },
+  "metadata": {
+    "description": "Writers' Room: an agent skill for writing podcast scripts, blogs and social posts with real hooks, narrative and zero AI slop."
+  },
   "plugins": [
     {
       "name": "writers-room",
