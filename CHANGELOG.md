@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## v0.2.2 — 2026-11-13
 
 From an end-to-end audit (fresh agents running the portfolio, no-material and video-ad scenarios):
 
