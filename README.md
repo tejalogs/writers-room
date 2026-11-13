@@ -87,6 +87,8 @@ Every stage saves its output, so you can review the angle and outline before a s
 npx skills add tejalogs/writers-room
 ```
 
+On older Node it fails with a `styleText` error. Upgrade Node, or use this instead:
+
 **No Node, or an older version? One command, no dependencies**
 ```bash
 git clone --depth 1 https://github.com/tejalogs/writers-room /tmp/writers-room && mkdir -p .agents/skills && cp -r /tmp/writers-room/skills/writers-room .agents/skills/
