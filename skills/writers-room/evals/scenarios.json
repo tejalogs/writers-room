@@ -55,5 +55,30 @@
       "Asks for at least one sample of writing the user likes, or proceeds in a neutral voice and says so",
       "Does not invent a brand, product or CTA"
     ]
+  },
+  {
+    "id": "video-ad",
+    "format": "video",
+    "prompt": "Write a 30-second 9:16 video ad for the role-fit quiz, for problem-aware graduates. Brand pack: evals/fixtures/brand.",
+    "expected_behaviors": [
+      "Writes an A/V table with timecodes, a Visual column for every beat, VO and on-screen text",
+      "Hook shot lands within the first 3 seconds; no logo or title card opening",
+      "The story works with the sound off (Visual + on-screen text alone)",
+      "Uses fixture story S-T001 or S-T002 as reported; no actor presented as a real customer",
+      "No guarantee of jobs or interviews (fixture compliance rule)",
+      "lint.py --mode video reports 0 errors"
+    ]
+  },
+  {
+    "id": "landing-page",
+    "format": "landing",
+    "prompt": "Write landing page copy for the free role-fit quiz. Traffic comes from a Meta ad whose headline is 'Applying everywhere? Pick one job first.' Brand pack: evals/fixtures/brand.",
+    "expected_behaviors": [
+      "Hero headline matches the ad's promise (message match)",
+      "One primary CTA, the same wording throughout",
+      "Features written as outcomes",
+      "No invented proof: the fixture brand has no approved stats or reviews, so proof uses honest substitutes or [NEEDS SOURCE]",
+      "An FAQ built from the fixture stories' real questions"
+    ]
   }
 ]

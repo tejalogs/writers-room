@@ -2,7 +2,7 @@
 """Writers' Room linter: deterministic checks for blogs and podcast scripts.
 
 Usage:
-    python3 lint.py FILE --mode blog|podcast [--brand brand.json] [--json]
+    python3 lint.py FILE --mode blog|podcast|video [--brand brand.json] [--json]
 
 Exit code 1 if any ERROR is found. Standard library only.
 """
@@ -67,6 +67,14 @@ LIMITS = {
     "podcast": {"max_sentence": 25, "first_line": 15, "min_words": 300},
 }
 REHOOK_MAX_GAP_WORDS = 260  # ~90-105 s at 150 wpm
+
+# Video A/V table: | 0:00–0:02 | Visual | Audio (VO: ... ; SFX: ...) | On-screen text |
+TIME_ROW_RE = re.compile(r"^\|\s*(\d{1,2}):(\d{2})\s*[–-]\s*(\d{1,2}):(\d{2})\s*\|(.*)$", re.M)
+VO_RE = re.compile(r"\bVO:\s*([^;·]+)", re.I)
+EMPTY_CELL = frozenset({"", "-", "–", "—", "n/a"})
+VIDEO_HOOK_MAX_S = 3
+VIDEO_TEXT_MAX_WORDS = 8
+VIDEO_VO_MAX_WPS = 2.7
 
 
 @dataclass(frozen=True)
@@ -340,6 +348,90 @@ def check_rehooks(body: str) -> list[Finding]:
     return []
 
 
+# ---------- video-only ----------
+
+@dataclass(frozen=True)
+class Shot:
+    start: int
+    end: int
+    visual: str
+    audio: str
+    text: str
+    line: int
+
+
+def _shot_from_match(match: re.Match[str], body: str) -> Shot:
+    cells = [c.strip() for c in match.group(5).rstrip().rstrip("|").split("|")]
+    visual, audio, text = (cells + ["", "", ""])[:3]
+    start = int(match.group(1)) * 60 + int(match.group(2))
+    end = int(match.group(3)) * 60 + int(match.group(4))
+    return Shot(start, end, visual, audio, text, line_of(body, match.start()))
+
+
+def parse_shots(body: str) -> tuple[Shot, ...]:
+    return tuple(_shot_from_match(m, body) for m in TIME_ROW_RE.finditer(body))
+
+
+def _cell_words(cell: str) -> int:
+    return 0 if cell.strip().lower() in EMPTY_CELL else len(words(cell))
+
+
+def _vo_text(audio: str) -> str:
+    return " ".join(m.group(1) for m in VO_RE.finditer(audio))
+
+
+def check_shot(shot: Shot, previous_end: int | None) -> list[Finding]:
+    found = []
+    duration = shot.end - shot.start
+    if duration <= 0:
+        return [Finding("ERROR", "timecode", "End time must be after start time", shot.line)]
+    if previous_end is not None and shot.start != previous_end:
+        found.append(Finding("WARN", "timecode-gap",
+                             f"Starts at {shot.start}s but the previous shot ended at {previous_end}s", shot.line))
+    if shot.visual.strip().lower() in EMPTY_CELL:
+        found.append(Finding("ERROR", "no-visual", "Every beat needs a shot: what's on screen?", shot.line))
+    n_text = _cell_words(shot.text)
+    if n_text > VIDEO_TEXT_MAX_WORDS:
+        found.append(Finding("WARN", "onscreen-text",
+                             f"On-screen text is {n_text} words (max {VIDEO_TEXT_MAX_WORDS})", shot.line))
+    n_vo = len(words(_vo_text(shot.audio)))
+    if n_vo / duration > VIDEO_VO_MAX_WPS:
+        found.append(Finding("WARN", "vo-pace",
+                             f"{n_vo} VO words in {duration}s ({n_vo / duration:.1f}/s; max {VIDEO_VO_MAX_WPS}); "
+                             "cut words, not pauses", shot.line))
+    return found
+
+
+def check_video(body: str) -> list[Finding]:
+    shots = parse_shots(body)
+    if not shots:
+        return [Finding("ERROR", "av-table",
+                        "No A/V table found: use | 0:00–0:02 | Visual | Audio | On-screen text | rows")]
+    found: list[Finding] = []
+    first = shots[0]
+    if first.start != 0 or first.end > VIDEO_HOOK_MAX_S:
+        found.append(Finding("WARN", "late-hook",
+                             f"First shot runs {first.start}–{first.end}s; land the hook within {VIDEO_HOOK_MAX_S}s",
+                             first.line))
+    ends = (None,) + tuple(s.end for s in shots[:-1])
+    for shot, previous_end in zip(shots, ends):
+        found.extend(check_shot(shot, previous_end))
+    return found
+
+
+def video_copy(body: str) -> str:
+    """The words a viewer hears or reads, for the shared language checks."""
+    shots = parse_shots(body)
+    parts = [_vo_text(s.audio) for s in shots] + [s.text for s in shots if _cell_words(s.text)]
+    return "\n\n".join(p for p in parts if p.strip())
+
+
+def lint_video(body: str, banned: Iterable[str], brand: dict, watch: Iterable[str]) -> list[Finding]:
+    copy = video_copy(body)
+    return (check_banned(body, banned) + check_brand_terms(body, brand) + check_needs(body)
+            + check_structural_tells(copy) + check_watch_words(copy, watch) + check_video(body))
+
+
 # ---------- blog-only ----------
 
 def check_blog_structure(meta: dict[str, str], body: str) -> list[Finding]:
@@ -404,6 +496,8 @@ def check_meta(meta: dict[str, str], body: str, h1: str) -> list[Finding]:
 def lint(text: str, mode: str, banned: Iterable[str], brand: dict,
          watch: Iterable[str] = ()) -> list[Finding]:
     meta, body = split_frontmatter(text)
+    if mode == "video":
+        return lint_video(body, banned, brand, watch)
     prose = clean_prose(body)
     findings: list[Finding] = []
     findings += check_banned(body, banned)
@@ -443,7 +537,7 @@ def format_report(findings: list[Finding], path: str) -> str:
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("file", type=Path)
-    parser.add_argument("--mode", choices=("blog", "podcast"), required=True)
+    parser.add_argument("--mode", choices=("blog", "podcast", "video"), required=True)
     parser.add_argument("--brand", type=Path, default=None, help="brand.json from a brand pack")
     parser.add_argument("--banned", type=Path, default=DEFAULT_BANNED)
     parser.add_argument("--watch", type=Path, default=DEFAULT_WATCH)

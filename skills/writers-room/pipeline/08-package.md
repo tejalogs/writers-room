@@ -25,6 +25,21 @@
 5. `PodcastEpisode` JSON-LD.
 6. Blog spin-off: the H2 questions this episode answers.
 
+## Video
+
+1. Final A/V table + shot list (or AI-generation prompts per shot, with a character sheet).
+2. Cut-downs: 15 s and 6 s versions, each with its own hook shot.
+3. Aspect ratios needed (9:16, 4:5/1:1, 16:9) and what to reframe in each (text safe zones).
+4. Thumbnail or cover frame, plus a first-frame text card.
+5. Captions file (full VO transcript).
+
+## Landing page
+
+1. Final copy by section, with the CTA wording repeated consistently.
+2. Title tag and meta description (if organic), `FAQPage` JSON-LD.
+3. The 3 ads (or search queries) whose promise the headline must match.
+4. One A/B test to run first (usually the headline).
+
 ## Learning-loop row
 
 Add a pending row to the brand's `evals/performance-log.csv` with slug, format, angle type, storytelling device, hook type, publish date (blank until live). Leads, signups or sales and brand mentions are filled in later, from the brand's analytics.

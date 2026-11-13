@@ -8,7 +8,7 @@ Fill every field. If the user didn't give one, choose a sensible default and mar
 ```markdown
 # Brief: <working title>
 
-- Format: blog (post type: answer | playbook | POV | story | comparison | data) / podcast (solo | two-host | interview guide) / social (LinkedIn | X post | X thread | Instagram caption | YouTube/episode description | short-video script) / all formats from one idea
+- Format: blog (post type: answer | playbook | POV | story | comparison | data) / podcast (solo | two-host | interview guide) / social (LinkedIn | X post | X thread | Instagram caption | YouTube/episode description) / ad (Google search | Meta | LinkedIn; awareness level: unaware → most aware) / landing page (traffic source: ad | organic | email) / video (ad | Reel/Short/TikTok | YouTube intro; length; aspect ratio; filmed | animated | AI-generated) / all formats from one idea
 - Length: <words or minutes>
 - Market / spelling: <e.g. UK, US>
 - Audience segment: <one segment from BRAND.md, described as a person in one sentence>

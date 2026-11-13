@@ -14,7 +14,7 @@
 
 **Writers' Room is an open-source agent skill that makes AI write non-fiction people actually finish.** It gives any AI agent (Claude Code, Codex, Cursor, Gemini CLI, Antigravity or a local model) a professional writers' room: craft guides distilled from the great non-fiction writers, an eight-stage pipeline, a critic panel and a code linter that catches generic "AI slop" before it ships.
 
-It writes **podcast scripts** (solo, two-host, interview), **blog posts** structured for SEO and AI answer engines (AEO/GEO), and **social posts** (LinkedIn, X threads, captions, YouTube descriptions, short-video scripts), all built on true stories, never invented ones.
+It writes **podcast scripts** (solo, two-host, interview), **blog posts** structured for SEO and AI answer engines (AEO/GEO), **social posts** (LinkedIn, X threads, captions, YouTube descriptions), **ads** (Google, Meta, LinkedIn), **landing pages**, and **video scripts** with shots, voice-over and on-screen text (video ads, Reels, Shorts, TikTok), all built on true stories, never invented ones. Examples cover SaaS, health, finance, travel and careers.
 
 > Most AI writing tools fix the words after the fact. Writers' Room fixes the thinking first: the angle, the hook, the story and the structure. Then it checks the words.
 
@@ -53,6 +53,8 @@ It writes **podcast scripts** (solo, two-host, interview), **blog posts** struct
 | ✅ **Truth by design** | Never invents stories, quotes or stats: gaps become `[NEEDS STORY]`. Critics check frequency claims and invented thoughts |
 | 🔎 **SEO + AEO built in** | Answer blocks, question-shaped H2s, self-contained sections, information gain, FAQ and JSON-LD |
 | 🎙️ **Written for the ear** | Podcast rules for sentence length, signposting, numbers and two-host dynamics, plus a script format with delivery markers |
+| 🎬 **A filmmaker layer for video** | A/V tables with timecodes, a shot vocabulary, devices turned into pictures, sound-off design, AI-video prompts, and a linter that checks hook timing, on-screen text and voice-over pace |
+| 🎯 **Ads and landing pages** | Awareness levels, platform limits, variant matrices, message match, features → outcomes, real-proof rules and ad-policy guardrails for health, finance and jobs |
 | 🏷️ **Any brand, your voice** | Brand packs with voice samples, compliance rules the linter enforces, and a private story bank |
 | 🤏 **Small-model aware** | One stage per call; small models generate while larger models or humans judge, following the evidence |
 | 📈 **Learns what works** | A performance log (clicks, AI citations, listen-through, leads) feeds back into angle and hook choice |
@@ -114,10 +116,12 @@ Just say what you want:
 Write a blog on why strong CVs get no callbacks. Keyword "no interview callbacks", UK grads.
 Write a 12-minute two-host podcast script on why finishing a course isn't the same as being able to do it.
 Turn this idea into a LinkedIn post: <idea>
+Write 5 Meta ad variants and a 30-second video ad for our budgeting app. Audience: problem-aware.
+Write landing page copy for our physio clinic's free assessment. Traffic comes from Google search.
 Here's my draft, make it better: <paste>
 ```
 
-If the format isn't clear, the skill asks one question: blog, podcast, social post, or one idea → all formats.
+If the format isn't clear, the skill asks one question: blog, podcast, social post, ad, landing page, video script, or one idea → all formats.
 
 ---
 
@@ -144,6 +148,7 @@ The anonymiser strips emails, phones, URLs, postcodes, IDs and names. **Read its
 ```bash
 python3 skills/writers-room/scripts/lint.py draft.md --mode blog --brand .writers-room/brand.json
 python3 skills/writers-room/scripts/lint.py script.md --mode podcast
+python3 skills/writers-room/scripts/lint.py video-ad.md --mode video    # A/V table: hook timing, on-screen text, VO pace
 ```
 
 ```text
@@ -172,10 +177,13 @@ skills/writers-room/
 │   ├── narrative.md          scenes, character, pacing, persuasion arc, ethics
 │   ├── word-craft.md         clichés, machine tells, zombie nouns
 │   ├── masters.md            McPhee, Ira Glass, Gladwell, Zinsser, Orwell, Pinker, Feynman…
-│   ├── examples.md           before/after pairs + model passages
+│   ├── examples.md           before/after pairs, model passages, SaaS/health/finance/travel
 │   ├── podcast-structure.md  writing for the ear, episode arc, script format
 │   ├── blog-structure.md     post types, anatomy for scanner/reader/answer engine
-│   ├── social-structure.md   LinkedIn, X, captions, descriptions, short video
+│   ├── social-structure.md   LinkedIn, X, captions, descriptions
+│   ├── ads-structure.md      awareness levels, platform limits, variants, ad policy
+│   ├── landing-page-structure.md  hero, sections, features → outcomes, proof, CTAs
+│   ├── video-structure.md    the filmmaker layer: shots, A/V tables, on-screen text, AI video
 │   ├── seo-aeo.md            intent, question mining, quotable chunks, schema
 │   ├── banned-phrases.txt    multi-word phrases (linter ERROR)
 │   └── watch-words.txt       single words (linter WARN by density)
@@ -203,7 +211,7 @@ The craft comes from the masters of non-fiction. The mechanics come from researc
 
 ## Prove it on your own model
 
-[`evals/RUNNING.md`](skills/writers-room/evals/RUNNING.md) has five scenarios (including "no material: must not invent"), a fictional brand pack, and `compare.py` to compare lint results with and without the skill across model sizes.
+[`evals/RUNNING.md`](skills/writers-room/evals/RUNNING.md) has seven scenarios (blog, podcast, social, video ad, landing page, and "no material: must not invent"), a fictional brand pack, and `compare.py` to compare lint results with and without the skill across model sizes.
 
 ---
 
@@ -218,8 +226,11 @@ Yes. It's plain Markdown plus two small Python scripts. With small local models,
 **Will it make up statistics or testimonials?**
 It's designed not to. Missing material becomes `[NEEDS STORY]` or `[NEEDS SOURCE]`, and the Truth Editor critic checks quotes, numbers, frequency claims ("most people…") and invented thoughts.
 
-**Can I use it for ads, newsletters or landing pages?**
-Social posts, descriptions and newsletter intros are built in. The persuasion arc and Contradiction Hunt apply to ads and landing pages too. Dedicated formats are on the roadmap.
+**Can I use it for ads, video ads and landing pages?**
+Yes. There are dedicated guides for text and image ads (Google, Meta, LinkedIn), landing pages, and video scripts with shots and on-screen text. The linter has a video mode, and the critic panel adds a Director, a Media Buyer and a Conversion Editor.
+
+**Is it only for career content?**
+No. The first examples follow one job-hunting story so you can see a single thread, and `examples.md` shows every hook type and rewrite in SaaS, health, finance and travel too.
 
 **Does it support my language?**
 The craft is language-neutral. The banned and watch lists and the linter heuristics are English-only for now; contributions welcome.

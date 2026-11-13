@@ -72,7 +72,7 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Compare lint results for two output folders")
     parser.add_argument("--a", type=Path, required=True, help="e.g. baseline outputs")
     parser.add_argument("--b", type=Path, required=True, help="e.g. with-skill outputs")
-    parser.add_argument("--mode", choices=("blog", "podcast"), required=True)
+    parser.add_argument("--mode", choices=("blog", "podcast", "video"), required=True)
     parser.add_argument("--brand", type=Path, default=None)
     parser.add_argument("--label-a", default="Baseline")
     parser.add_argument("--label-b", default="With skill")

@@ -1,5 +1,16 @@
 # Changelog
 
+## Unreleased
+
+### Added
+- **Ads** (`craft/ads-structure.md`): awareness levels, platform anatomy and limits (Google RSA, Meta, LinkedIn), ad patterns, variant matrices, and policy guardrails (personal attributes, health, finance, jobs, fake urgency).
+- **Landing pages** (`craft/landing-page-structure.md`): the persuasion arc as a page, hero line by line, features → outcomes, real-proof rules, objections, CTAs and pre-ship checks.
+- **Video, the filmmaker layer** (`craft/video-structure.md`): screen rules, shot vocabulary, storytelling devices turned into pictures, timed structures for 15/30/60 s, the A/V table format, on-screen text and VO pace, AI-video prompt briefs, and truth on screen.
+- **Linter `--mode video`**: checks hook timing, missing visuals, on-screen text length, voice-over pace and timecode gaps, plus the shared language checks on VO and text. 9 new tests.
+- **Examples across domains** (`craft/examples.md` §3): all eight hook types, generic → specific rewrites, declared → shown headlines and a Contradiction Hunt in SaaS, health, finance and travel.
+- Critic panel: Director (video), Media Buyer (ads) and Conversion Editor (landing pages).
+- Intake menu, brief and package stage cover ads, landing pages and video.
+
 ## v0.1.0 — 2026-11-13
 
 First public release.
@@ -37,3 +48,4 @@ First public release.
 - Teaching examples are drawn mostly from one domain (careers); more domains are planned.
 - No published baseline eval results yet. Run `evals/RUNNING.md` on your own models.
 - No dedicated ad, landing-page or video-ad format yet.
+(The domain and format limitations are addressed in Unreleased.)

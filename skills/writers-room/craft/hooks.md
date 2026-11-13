@@ -4,7 +4,7 @@ A hook is a **promise plus a gap**. It promises something the audience wants and
 
 ## The eight hook types
 
-Each has a mechanism (why it works), a use case and a failure mode. Examples are illustrative patterns; in real pieces, the details must come from the story bank or a cited source.
+Each has a mechanism (why it works), a use case and a failure mode. Examples are illustrative patterns; in real pieces, the details must come from the story bank or a cited source. The examples below come from one domain (careers); `examples.md` §3.1 shows all eight types in SaaS, health, finance and travel.
 
 ### 1. Cold open in the scene
 Start in the middle of a real moment, at the point of highest tension.

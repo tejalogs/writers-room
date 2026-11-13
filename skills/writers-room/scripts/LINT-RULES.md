@@ -32,6 +32,15 @@ Fix flagged sentences by rewriting toward a specific detail (number, name, sourc
 - WARN: more than 2 bold spans or list items (listeners can't see formatting).
 - Note: the 25-word cap and ~260-word re-hook spacing are craft rules of thumb, not measured thresholds.
 
+## Video (`--mode video`, A/V table)
+- ERROR: no A/V table (`| 0:00–0:02 | Visual | Audio | On-screen text |` rows).
+- ERROR: a row with no visual, or an end time not after its start time.
+- WARN: the first shot doesn't start at 0:00 or runs past 0:03 (late hook).
+- WARN: on-screen text over 8 words in one row.
+- WARN: voice-over faster than 2.7 words per second (text after `VO:` in the Audio column).
+- WARN: a gap or overlap between consecutive timecodes.
+- The shared language checks (banned phrases, brand rules, watch words, structural tells) run on the voice-over and on-screen text.
+
 ## Blog
 - ERROR: no frontmatter; title missing or over 60 characters; meta description outside 120–160 characters; no primary keyword.
 - ERROR: not exactly one H1.

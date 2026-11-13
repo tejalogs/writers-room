@@ -7,6 +7,9 @@ Models learn style from examples far better than from rules: in a 400-author sty
 ## Contents
 1. Before → after pairs (hook, opening, generic paragraph, bridge, section ending, ear rewrite, answer block, close)
 2. Model passages: blog (2), podcast (2)
+3. Across domains: SaaS, health, finance, travel (hooks by type, rewrites, headlines, a Contradiction Hunt each)
+
+Sections 1 and 2 use one domain (job hunting) so you can follow a single thread. Section 3 shows the same moves elsewhere. Pick the examples closest to your brand; the moves transfer, the details never do.
 
 ---
 
@@ -92,3 +95,65 @@ Why it works: time and place in one stroke; the rejection compressed to its clic
 > [REHOOK]
 
 Why it works: the loop is paid off; the listener's objection is voiced and respected ("I get it"); the perspective flips to the other side; it ends on a direct question to the listener.
+
+---
+
+## 3. Across domains
+
+All illustrative: invented companies, people and numbers, for teaching only. **Health and finance pieces carry extra rules:** no outcome claims without a source, no advice presented as personal, and follow your regulator and the ad platform's policies (see `ads-structure.md`).
+
+### 3.1 The same hook types in four domains
+
+| Hook type | SaaS (project-management tool) | Health (physiotherapy clinic) | Finance (budgeting app) | Travel (small tour operator) |
+|---|---|---|---|---|
+| **Cold open** | Friday, 4:52 pm. The launch checklist lived in three places, and two of them disagreed. | He'd done the exercises for six weeks. Every morning. The knee still clicked on the stairs. | The card was declined at the petrol pump. She had £2,300 in savings. | The driver took the long way to the temple, and it was the best hour of the trip. |
+| **Contrarian** | Your team doesn't need another tool. It needs fewer places to look. | Rest is often the slowest way to fix a sore back. | A budget that tracks every coffee is built to be abandoned. | The best day of an itinerary is usually the one you didn't plan. |
+| **Specific number** | Our support team counted: 31% of "bug" tickets last quarter were people looking in the wrong tab. | We asked 120 patients when their pain started. 41 said "after I started stretching more." | Most of the users who quit our app did so in week three. Not week one. | We've driven the same coast road 400 times. Guests still stop the car at the same bend. |
+| **Overheard line** | "I don't need more features. I need to stop asking where things are." | "I'm not injured. I'm just stiff. Aren't I?" | "I know exactly where my money goes. I just don't like it." | "Can we skip the famous one and see where you'd go?" |
+| **Two-people contrast** | Two teams, same tool, same size. One ships weekly; one holds a status meeting about the status meeting. | Same injury, same age. One was back running in eight weeks; the other is still "taking it easy." | Same salary. One has three months' cushion; the other has three subscriptions they forgot. | Two families, same week in the hills. One saw six sights. The other remembers one sunset. |
+| **Implicating question** | When did someone on your team last ask, "Where's the latest version?" | How long have you been planning to "get that looked at"? | If your card were declined today, which bill would you be most embarrassed about? | What do you actually remember from your last holiday: the sights, or one moment? |
+| **Confession** | We built the feature everyone asked for. Usage went down. | I used to give every patient the same sheet of exercises. I was wrong about half of them. | I made the app because I was the one at the petrol pump. | The first tour I ran, I over-planned every minute. A guest told me, kindly, that it felt like work. |
+| **Named enemy** | The real competitor isn't another app. It's the spreadsheet someone made "just for now" in 2022. | "No pain, no gain" has kept more people injured than any accident. | "I'll start saving when I earn more." | The checklist itinerary: twelve sights, zero memories. |
+
+*Numbers in the "specific number" row are placeholders. In real pieces they must be the brand's own measured data, with a date.*
+
+### 3.2 Generic → specific rewrites
+
+**SaaS (feature page)**
+- **Before:** Our powerful, intuitive platform streamlines collaboration and empowers teams to achieve more.
+- **After:** Every task, file and decision for a project sits on one page. When someone asks "where's the latest version?", the answer is "the page."
+- **The move:** show the outcome as a moment the reader has lived; replace three adjectives with one scene.
+
+**Health (clinic blog)**
+- **Before:** Back pain is a common condition that can significantly impact your quality of life. It's important to consult a professional.
+- **After:** The worst part of his back pain wasn't the pain. It was saying no to carrying his daughter up to bed. That's when he booked.
+- **The move:** the cost is a specific lost moment, not an abstract "quality of life". (In a real piece, from a patient who consented to share it.)
+
+**Finance (app onboarding email)**
+- **Before:** Take control of your finances and unlock financial freedom with our comprehensive budgeting tools.
+- **After:** Tonight, before bed, open your bank app and find one subscription you forgot about. That's the whole first step.
+- **The move:** one tiny, concrete action today instead of a grand promise. Finance copy especially must never promise outcomes.
+
+**Travel (tour page)**
+- **Before:** Embark on an unforgettable journey through breathtaking landscapes and immerse yourself in the rich local culture.
+- **After:** At 6 am the mist sits in the valley like milk in tea. Your driver, who grew up two villages over, will stop the car without being asked.
+- **The move:** a sensory, specific image and a human guide, with every banned travel cliché ("embark", "journey", "breathtaking", "immerse") gone.
+
+### 3.3 Headlines: declared → shown
+
+| Domain | Declared (weak) | Shown (strong) |
+|---|---|---|
+| SaaS | The all-in-one collaboration platform | Stop asking "where's the latest version?" |
+| Health | Expert physiotherapy care | Walk down the stairs without holding the rail |
+| Finance | Smart budgeting made easy | Find the money you didn't know you were spending |
+| Travel | Unforgettable tours of Kerala | See the Kerala your driver would show his cousins |
+
+### 3.4 One Contradiction Hunt per domain
+
+| | SaaS | Health | Finance | Travel |
+|---|---|---|---|---|
+| Believe | "We need a better tool." | "Rest will fix it." | "I'll save when I earn more." | "More sights = better trip." |
+| Do | Add another app | Stop moving | Spend what arrives | Pack the itinerary |
+| Expect | Less chaos | Healing | A cushion, later | Great memories |
+| Experience | More places to look | Stiffness, slower recovery | Same balance, bigger salary | A blur of car parks |
+| **Truth** | **Chaos comes from places, not tools.** | **The right movement often heals faster than none.** (needs a clinical source) | **Saving is a habit, not an income level.** | **People remember moments, not sights.** |

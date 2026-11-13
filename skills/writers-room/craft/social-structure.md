@@ -20,7 +20,7 @@ Social writing is the hook stack compressed. The feed gives you one line, someti
 | **X thread** | Hook post (promise + count: "5 things...") → one idea per post → closing post that pays off the hook | 5–8 posts | Each post must stand alone if quoted |
 | **Instagram caption** | Hook line (expands the image) → short story → point → soft CTA | 80–200 words | Hook must not repeat what the image already says |
 | **YouTube / podcast description** | Line 1: the episode's promise in searchable words → 2–3 sentence summary → chapters → links | 100–250 words | First ~150 characters show in search; put the keyword there |
-| **Short-video script (Reels/Shorts/TikTok)** | Hook (0–2 s, said *and* on screen) → setup → turn → payoff → loop back to the start | 60–150 spoken words (20–60 s) | Write on-screen text separately; the first 2 seconds decide everything |
+| **Short-video script (Reels/Shorts/TikTok)** | Hook (0–2 s, said *and* on screen) → setup → turn → payoff → loop back to the start | 60–150 spoken words (20–60 s) | Write it as an A/V table with shots and on-screen text: see `video-structure.md` |
 
 ## The short pipeline for social
 

@@ -4,7 +4,7 @@ Anthropic's skill guidance: build evaluations first, compare against a run **wit
 
 ## Setup
 
-- Scenarios: `evals/scenarios.json` (5 scenarios with checkable expected behaviours).
+- Scenarios: `evals/scenarios.json` (7 scenarios with checkable expected behaviours: blog, podcast, no material, social post, no brand pack, video ad, landing page).
 - Fixture brand pack: `evals/fixtures/brand/` (a fictional brand with two approved test stories).
 
 ## Protocol

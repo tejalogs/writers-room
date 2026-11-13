@@ -54,6 +54,9 @@ Score 5 only if there is nothing to check. Any invention = 1.
 - Is the brand mention earned, or does it feel like an ad?
 - Where the brand appears, does it sell an outcome I can picture, or list features? Does it declare ("excellent guidance") or show?
 
-## 7. The Search Strategist (blogs) / The Producer (podcasts)
-- **Search:** intent match, answer block, H2s as real questions, self-contained sections, information gain present, FAQ quality, internal links, attributable claims.
-- **Producer:** runtime vs target, clip-worthy moments (at least 3), cold open strong enough to work as a trailer, two-host lines not filler.
+## 7. The format specialist (pick the one that matches the format)
+- **Search Strategist (blogs, organic landing pages):** intent match, answer block, H2s as real questions, self-contained sections, information gain present, FAQ quality, internal links, attributable claims.
+- **Producer (podcasts):** runtime vs target, clip-worthy moments (at least 3), cold open strong enough to work as a trailer, two-host lines not filler.
+- **Director (video):** read only the Visual column. Does it tell the story with the sound off? Is there a hook shot in the first 2–3 seconds? Does every beat have a shot that shows rather than illustrates the voice-over? Is the storytelling device visible? Do the on-screen text cards add to the VO instead of repeating it?
+- **Media Buyer (ads, ad landing pages):** does line 1 or shot 1 stop the right person on its own? Does the opening match the audience's awareness level? Does the ad's promise match the landing page headline? Is there one clear CTA (verb + outcome)? Is everything within platform limits and policy (no personal-attribute assertions, no unsupported health or finance claims, no fake urgency)?
+- **Conversion Editor (landing pages):** five-second test on the hero; one goal and one primary CTA; features shown as outcomes; proof real and next to its claim; the objections people actually raise answered.
