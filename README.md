@@ -116,6 +116,24 @@ cp -r writers-room/skills/writers-room .agents/skills/       # Codex, Gemini CLI
 
 ---
 
+## Updating
+
+Installs don't update themselves: each one is a copy of the files from the day you installed. To get a new release (see [Releases](https://github.com/tejalogs/writers-room/releases) and [CHANGELOG.md](CHANGELOG.md)), update the same way you installed:
+
+| Installed with | To update |
+|---|---|
+| The one-line installer | Run the same `curl … install.sh \| bash` command again. Your old copy is moved to a dated `.bak` folder beside it. |
+| Claude Code plugin | Run `/plugin marketplace update writers-room`, then update the plugin from the `/plugin` menu. |
+| skills CLI | Run `npx skills add tejalogs/writers-room` again (needs Node.js 22.20+). |
+| git clone | Run `git pull` in the cloned folder. If you copied `skills/writers-room` somewhere else, copy it again. |
+| Claude.ai upload | Zip the new `skills/writers-room` folder and upload it in place of the old one. |
+
+**What's kept:** your brand pack lives in your project's `.writers-room/` folder, outside the skill. Voice samples, story bank, compliance rules and performance log are never touched by an update.
+
+**What's replaced:** any edits you made inside the skill folder itself. The installer keeps them in the `.bak` folder so you can copy them back. To customise rules without losing them on update, put them in your brand pack instead (`brand.json` for linter rules, `BRAND.md` for voice and compliance).
+
+---
+
 ## Use it
 
 Just say what you want:
