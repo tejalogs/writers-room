@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## v0.3.2 — 2026-11-18
 
 A real user test produced a blog that scored 97/100 on the linter but was built on a study that never happened ("our research team ran the 7-Day Curriculum Autopsy… 72 seconds… 98% test coverage") and invented student quotes. The v0.3.1 anchor rule had pushed the model to *invent* anchors when the material was thin. The linter checked wording, not whether facts were real.
 
