@@ -19,6 +19,11 @@
   - unbacked frequency: "most people", "almost nobody", "everyone knows", "the vast majority"
 - WARN: a percentage or "X in Y" statistic with no source cue in the same sentence (`unsourced-stat`). A `[NEEDS SOURCE]` marker counts as a cue.
 - WARN: three or more sentences in a row starting with the same word (`repeated-opener`).
+- WARN (`self-research`): the brand claims a study it ran ("our research team ran", "we collected / fed / surveyed…", "our study found", a named "the 7-Day X Autopsy"). Keep it only if the claims table describes the real study and its method.
+- WARN (`signposting`): narrating the piece's structure ("here is why…", "you will see…", "you'll learn…", "let's look at…").
+- Blog: WARN (`label-lists`) two or more bullet lists built as "Label: explanation"; WARN (`emoji`) emoji in the copy.
+
+**Provenance (`provenance.py`, separate script):** every number, percentage, duration and quote in the final must appear in the material (stage 2, the 2b claims table, the brand pack). Anything else is reported as `unsourced-number` or `unsourced-quote`.
 - WARN: spelling that doesn't match the brand's `"spelling"` (UK/US), or a mix of both when none is set.
 - WARN: more than 8 hedge words (very, really, just, actually, basically, quite, simply) per 1,000 words, for pieces over 150 words.
 - INFO: every `[NEEDS …]` marker.

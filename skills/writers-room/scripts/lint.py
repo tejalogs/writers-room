@@ -20,7 +20,8 @@ from dataclasses import asdict, dataclass
 from pathlib import Path
 from typing import Iterable
 
-from checks_v2 import (apply_ignores, check_repeated_openers, check_spelling, check_unsourced_stats,
+from checks_v2 import (apply_ignores, check_emoji, check_label_lists, check_repeated_openers,
+                       check_self_research, check_signposting, check_spelling, check_unsourced_stats,
                        check_watch_clusters, score)
 from formats import ad_copy, check_ad, check_social, social_copy
 from hooks_check import check_hook, check_hook_list, parse_hook_list
@@ -376,13 +377,15 @@ def language_checks(raw_body: str, copy: str, banned: Iterable[str], brand: dict
     stat_text is the copy with [NEEDS …] markers kept, so a marked gap counts as sourced."""
     found = check_brand_terms(raw_body, brand) + check_needs(raw_body)
     found += check_unsourced_stats(stat_text if stat_text is not None else copy)
+    found += check_self_research(copy)
     lang = str(brand.get("lang", "en")).lower()
     if not lang.startswith("en"):
         return found + [Finding("INFO", "lang", f"English-only checks skipped (lang={lang})")]
     watch = tuple(watch)
     return (found + check_banned(raw_body, banned) + check_structural_tells(copy)
             + check_watch_words(copy, watch) + check_watch_clusters(copy, watch) + check_hedges(copy)
-            + check_repeated_openers(copy) + check_spelling(copy, brand.get("spelling")))
+            + check_repeated_openers(copy) + check_spelling(copy, brand.get("spelling"))
+            + check_signposting(copy))
 
 
 def check_throat_clearing(copy: str) -> list[Finding]:
@@ -469,7 +472,7 @@ def lint_long_form(meta: dict[str, str], body: str, mode: str, banned: Iterable[
         findings.append(Finding("WARN", "length", f"Only {n_words} words"))
     if mode == "podcast":
         return findings + check_rehooks(body) + check_podcast_markdown(body)
-    return findings + check_blog_structure(meta, body)
+    return findings + check_blog_structure(meta, body) + check_label_lists(body) + check_emoji(prose)
 
 
 def lint(text: str, mode: str, banned: Iterable[str], brand: dict,

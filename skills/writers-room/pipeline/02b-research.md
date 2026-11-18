@@ -19,9 +19,10 @@ Run this when the piece makes claims the story bank can't support: most blogs, l
    | 1 | ... | ... | YYYY | high / medium / low |
 
    *Confidence:* **high** = a primary source says it directly; **medium** = a reputable secondary source; **low** = a single or old source. Low-confidence claims are softened ("one 2021 survey found…") or cut.
-4. **Can't browse?** Write the claims you'd want, each as `[NEEDS SOURCE: claim]`, plus the search query that would find it. Don't fill the table from memory: remembered statistics are the most common source of invented numbers.
-5. **Information gain.** List what the top results all say (cover briefly) and what none of them say (cover deeply). In no-story mode, this "nobody says" list is where the piece's surprise comes from.
-6. **Unused-material check.** At the end of stage 4, come back and list any strong fact or perspective here that the outline doesn't use. Either use it or cut it on purpose.
+4. **Can't browse?** Write the claims you'd want, each as `[NEEDS SOURCE: claim]`, plus the search query that would find it. Don't fill the table from memory: remembered statistics are the most common source of invented numbers. And never fill the gap by inventing a study the brand "ran"; if the brand has its own data, it must be described in the brand pack.
+5. **Thin research is a finding, not a failure.** If the table is mostly `[NEEDS SOURCE]`, tell the user at the stage 3 checkpoint, and build the angle on an argument (a contrarian claim, a distinction, a method) instead of on numbers.
+6. **Information gain.** List what the top results all say (cover briefly) and what none of them say (cover deeply). In no-story mode, this "nobody says" list is where the piece's surprise comes from.
+7. **Unused-material check.** At the end of stage 4, come back and list any strong fact or perspective here that the outline doesn't use. Either use it or cut it on purpose.
 
 ## No-story mode hooks
 

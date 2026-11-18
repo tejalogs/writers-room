@@ -4,7 +4,7 @@ A hook is a **promise plus a gap**. It promises something the audience wants and
 
 ## Every hook carries an anchor
 
-An **anchor** is one concrete thing taken from your material that only this piece has:
+An **anchor** is one concrete thing **taken from your material** (the story bank, the stage-2b claims table, the brand pack) that only this piece has. If it isn't in the material, it isn't an anchor: it's an invention, however specific it sounds. With no material, your only anchors are the spine's claim and a sharp question.
 - a **number** from the story bank or the research table ("212 applications", "41 of 300");
 - a **name, place or object** from a real story ("Column F", "the 6:14 bus");
 - someone's **exact words** ("'It felt like begging. I sent it anyway.'");

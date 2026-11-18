@@ -179,6 +179,8 @@ python3 skills/writers-room/scripts/lint.py ads.md --mode ad           # Google/
 python3 skills/writers-room/scripts/lint.py post.md --mode social      # post length, the "see more" cut, hashtags
 python3 skills/writers-room/scripts/lint.py hooks.md --mode hooks      # dead hooks: "imagine…", coffee-and-laptop scenes, no anchor
 python3 skills/writers-room/scripts/preserve.py draft.md final.md      # did polishing drop a quote, link or gap marker?
+python3 skills/writers-room/scripts/provenance.py final.md --material 02-material.md 02b-research.md .writers-room
+                                                                       # does every number and quote trace to the material?
 ```
 
 <!-- wr-ignore: banned-phrase, not-x-but-y, vague-attribution -->
@@ -224,7 +226,7 @@ skills/writers-room/
 │   └── watch-words.txt       single words (linter WARN by density)
 ├── pipeline/                 00 interview / mine transcripts → 02b research → 08 package, plus LITE.md
 ├── evals/                    critic panel, pairwise judge, scenarios, fixture brand
-├── scripts/                  lint.py · preserve.py · anonymize.py · compare.py (stdlib only)
+├── scripts/                  lint.py · provenance.py · preserve.py · anonymize.py · compare.py (stdlib only)
 └── brand-template/           copy this to create your brand pack
 ```
 

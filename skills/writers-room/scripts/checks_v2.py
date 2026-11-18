@@ -37,6 +37,22 @@ SPELLING_PAIRS: tuple[tuple[frozenset[str], frozenset[str]], ...] = tuple(
         ("travelled travelling traveller", "traveled traveling traveler"),
     ))
 
+SELF_RESEARCH_RE = re.compile(
+    r"\bour (?:research|data|analytics|product|growth|editorial) team (?:ran|found|analy[sz]ed|tested|studied|collected)|"
+    r"\bwe (?:ran|conducted|collected|fed|tested|surveyed|analy[sz]ed|studied|benchmarked) (?:a |an |the |every |our |\d)|"
+    r"\bour (?:study|survey|experiment|analysis|research|audit|autopsy|benchmark|report) "
+    r"(?:found|finds|shows|showed|revealed|reveals|proves)", re.I)
+# A branded "study": "the 7-Day Curriculum Autopsy", "The Hiring Experiment".
+NAMED_STUDY_RE = re.compile(
+    r"\b[Tt]he (?:\d+-(?:[Dd]ay|[Ww]eek|[Mm]onth) )?(?:[A-Z][\w-]* ){1,3}"
+    r"(?:Autopsy|Experiment|Study|Survey|Audit|Benchmark|Challenge|Report)\b")
+SIGNPOST_RE = re.compile(
+    r"(?:^|[.!?]\s+)(?:here is (?:why|what|how)|here'?s (?:why|what|how)|you will (?:see|learn|discover|find out)|"
+    r"you'll (?:see|learn|discover|find out)|in this (?:post|article|guide|piece)|let'?s (?:look|explore|break down|dive)|"
+    r"below,? (?:we|you)|we'?ll (?:cover|explore|look at|walk through))\b", re.I | re.M)
+LABEL_BULLET_RE = re.compile(r"^\s*[-*]\s+(?:\*\*)?[A-Z][^:\n]{1,45}:(?:\*\*)?\s+\S")
+EMOJI_RE = re.compile("[\U0001F300-\U0001FAFF\U0001F600-\U0001F64F☀-⛿✀-➿⭐⬆➡]")
+
 IGNORE_FILE_RE = re.compile(r"<!--\s*wr-ignore:\s*([\w,\s-]+?)\s*-->")
 IGNORE_LINE_RE = re.compile(r"<!--\s*wr-ignore-line:\s*([\w,\s-]+?)\s*-->")
 
@@ -90,6 +106,49 @@ def check_watch_clusters(prose: str, watch: Iterable[str]) -> list[Finding]:
             listed = ", ".join(toks[i] for i in window[:5])
             return [Finding("WARN", "watch-cluster",
                             f"{len(window)} watch words within {WATCH_WINDOW} words ({listed}); rewrite that passage")]
+    return []
+
+
+def check_self_research(prose: str) -> list[Finding]:
+    """The brand claiming to have run a study, survey or experiment."""
+    hits = [m.group(0) for m in SELF_RESEARCH_RE.finditer(prose)] + \
+           [m.group(0) for m in NAMED_STUDY_RE.finditer(prose)]
+    return [Finding("WARN", "self-research",
+                    f'"{h}": a study the brand ran must be in the claims table with its method; otherwise cut it')
+            for h in dict.fromkeys(hits)][:3]
+
+
+def check_signposting(prose: str) -> list[Finding]:
+    """Narrating the piece's own structure instead of delivering it."""
+    hits = [re.sub(r"\s+", " ", m.group(0)).strip(" .!?") for m in SIGNPOST_RE.finditer(prose)]
+    if not hits:
+        return []
+    return [Finding("WARN", "signposting",
+                    f'Narrates its own structure ({"; ".join(h[:30] for h in hits[:3])}): just deliver the content')]
+
+
+def check_label_lists(body: str) -> list[Finding]:
+    """Two or more bullet lists where most items are 'Label: explanation' (templated structure)."""
+    lists, current = [], []
+    for line in body.splitlines():
+        if re.match(r"^\s*[-*]\s+", line):
+            current.append(line)
+        elif current:
+            lists, current = lists + [current], []
+    if current:
+        lists = lists + [current]
+    templated = [lst for lst in lists if len(lst) >= 3 and sum(bool(LABEL_BULLET_RE.match(i)) for i in lst) >= 3]
+    if len(templated) >= 2:
+        return [Finding("WARN", "label-lists",
+                        f"{len(templated)} bullet lists built as 'Label: explanation'; the repeated template reads "
+                        "as machine-made. Turn at least one into prose or a table")]
+    return []
+
+
+def check_emoji(prose: str) -> list[Finding]:
+    found = EMOJI_RE.findall(prose)
+    if found:
+        return [Finding("WARN", "emoji", f"Emoji in the copy ({''.join(found[:5])}); cut them from blogs and landing pages")]
     return []
 
 

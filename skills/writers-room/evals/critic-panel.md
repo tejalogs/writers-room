@@ -16,7 +16,8 @@ Open-ended "critique and improve this" loops show no reliable gain, and a model 
 ---
 
 ## 1. The Truth Editor (runs first; any failure blocks shipping)
-- Is every story, quote and number traceable to the story bank or a cited source?
+- Is every story, quote and number traceable to the story bank or a cited source? Run `scripts/provenance.py` and go through each item it flags.
+- Does the piece claim the brand ran a study, survey, experiment or named "autopsy"? If the brand pack doesn't describe it with its method, it's invented: cut it and everything that hangs off it.
 - Are quotes verbatim? Are outcomes stated only if the source states them?
 - Any claim that overreaches the evidence ("always", "guaranteed", "everyone")?
 - Any compliance rule from `BRAND.md` broken?

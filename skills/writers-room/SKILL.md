@@ -82,7 +82,9 @@ python3 <skill-dir>/scripts/lint.py <out>/05-draft.md --mode <mode> --brand <bra
 Modes: `blog` (also landing pages), `podcast`, `video` (A/V table), `ad`, `social`, and `hooks` (a bullet list of hooks from stage 3). Every mode checks the opening for dead hooks. After polishing, check nothing real was lost:
 ```bash
 python3 <skill-dir>/scripts/preserve.py <out>/05-draft.md <out>/final.md --review <out>/review.md
+python3 <skill-dir>/scripts/provenance.py <out>/final.md --material <out>/02-material.md <out>/02b-research.md <brand-dir>
 ```
+`provenance.py` flags every number and quote in the final that doesn't appear in the material. Each one gets a source in the claims table, a `[NEEDS SOURCE]` marker, or cut. This is the check that stops invented anchors.
 `brand.json` can set `"spelling": "UK"|"US"` (the linter flags the other spelling) and `"lang"` (anything other than `en` turns off the English-only checks).
 No command line? Apply `scripts/LINT-RULES.md` by hand.
 
@@ -98,7 +100,7 @@ End every run with a short message to the user:
 
 ## Ship criteria
 
-Lint score of 80 or more with zero errors, every critic in stage 6 at 4+ out of 5, all seven tests in `craft/principles.md` passed, `preserve.py` clean, and every remaining `[NEEDS …]` item listed in `review.md`.
+Lint score of 80 or more with zero errors, every critic in stage 6 at 4+ out of 5, all seven tests in `craft/principles.md` passed, `preserve.py` and `provenance.py` clean, and every remaining `[NEEDS …]` item listed in `review.md`.
 
 ## Small models
 

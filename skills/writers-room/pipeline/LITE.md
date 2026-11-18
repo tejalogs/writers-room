@@ -45,6 +45,6 @@ Run:
 ```bash
 python3 <skill-dir>/scripts/lint.py draft.md --mode <mode> --brand <brand-dir>/brand.json
 ```
-For each flagged sentence, call the model with only that sentence and its neighbours: *"Rewrite this so it says something specific: a number, a name, a source or someone's exact words. Don't just swap the flagged word."* Repeat at most 3 times. Save the result as `final.md` and run `scripts/preserve.py draft.md final.md`.
+For each flagged sentence, call the model with only that sentence and its neighbours: *"Rewrite this so it says something specific: a number, a name, a source or someone's exact words. Don't just swap the flagged word."* Repeat at most 3 times. Save the result as `final.md`, then run `scripts/preserve.py draft.md final.md` and `scripts/provenance.py final.md --material brief.md <brand-dir>`. Cut or mark every number and quote that provenance flags; small models invent numbers more often than anything else.
 
 Hand off: tell the user where `final.md` is, what's still `[NEEDS …]`, and that a larger model or a human should do the final read.

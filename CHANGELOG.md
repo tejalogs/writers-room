@@ -1,5 +1,26 @@
 # Changelog
 
+## Unreleased
+
+A real user test produced a blog that scored 97/100 on the linter but was built on a study that never happened ("our research team ran the 7-Day Curriculum Autopsy… 72 seconds… 98% test coverage") and invented student quotes. The v0.3.1 anchor rule had pushed the model to *invent* anchors when the material was thin. The linter checked wording, not whether facts were real.
+
+### Added
+- **`provenance.py`:** every number, percentage, duration and quote in the final must appear in the material (stage 2, the 2b claims table, the brand pack). On the test blog it flagged all 13 invented items and passed the one real fact.
+- Linter checks:
+  - `self-research`: "our team ran…", "we collected / fed / surveyed…", named "the 7-Day X Autopsy" studies.
+  - `signposting`: "here is why…", "you will see…".
+  - `label-lists`: repeated "Label: explanation" bullet templates (blog).
+  - `emoji`: emoji in blog copy.
+- Eval: the no-material scenario now also checks for invented studies and runs provenance.
+
+### Changed
+- **Principle 1:** never invent research the brand supposedly did. "Specific" means a specific idea, not an invented fact.
+- **Anchors must come from the material.** With none, the only anchors are the spine's claim and a sharp question.
+- **Research stage:** thin research is reported at the checkpoint, and the angle is built on an argument instead of numbers.
+- Polish, lite path, Truth Editor and ship criteria all run provenance.
+
+The test blog now scores 79/100 (below the ship bar of 80), and provenance blocks it until the invented numbers are sourced or cut. 111 tests.
+
 ## v0.3.1 — 2026-11-18
 
 Hooks were the weakest part in user tests. With no real story to hand, models opened with "Imagine you're walking…" or "I opened my laptop, coffee in hand…": scenes built from props that tell the reader nothing.

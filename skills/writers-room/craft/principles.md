@@ -5,6 +5,10 @@ Ranked. When two collide, the higher one wins.
 ## 1. True beats impressive
 Never invent stories, quotes, numbers, people or outcomes. Use the brand's story bank and cited sources. If you don't have it, mark `[NEEDS STORY]` / `[NEEDS SOURCE]`. Readers forgive a missing detail; they never forgive a fake one. AI answer engines also discount claims they can't verify.
 
+**Never invent research the brand supposedly did.** No "our team ran…", no named experiments ("the 7-Day X Autopsy"), no surveys, benchmarks or datasets unless the brand pack or claims table describes the real one, with its method. A made-up study is the most damaging fake of all: it looks like proof, so every number hanging off it becomes a fake too.
+
+**Specific doesn't mean invented.** When the material is thin, be specific about the *idea* (a sharp claim, a named mistake, a precise distinction) rather than inventing specific *facts*. A number with no source is worse than no number.
+
 ## 2. Specific beats general
 General writing is invisible. Every claim earns a concrete detail: a number, a time, a place, a job title, a verbatim line someone said.
 
