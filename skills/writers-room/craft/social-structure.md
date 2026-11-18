@@ -11,6 +11,8 @@ Social writing is the hook stack compressed. The feed gives you one line, someti
 5. **Native, not repurposed-looking.** Never paste a blog intro. Rewrite for the platform's rhythm.
 6. Every rule in `principles.md` still applies: true, specific, the reader is the hero.
 
+**Lint-ready format:** start the file with frontmatter `platform: linkedin` (or `x`, `threads`, `instagram`, `youtube`). For threads, separate posts with a line containing only `---`. Then run `lint.py --mode social`; it checks post length, the first line against the "see more" cut, hashtags and lazy closing questions.
+
 ## By platform
 
 | Platform | Shape | Length | Notes |

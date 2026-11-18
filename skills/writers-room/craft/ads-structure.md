@@ -40,6 +40,8 @@ Limits change: **check the platform's current specs before shipping.** These wer
 
 **Google responsive search ad set (minimum):** 3 headlines with the keyword, 3 with the benefit or outcome, 2 with proof (real numbers, awards, reviews), 2 with the offer, 2 with a CTA, 1 that handles the main objection. Pin only when you must.
 
+**Lint-ready format:** write each ad set under H2s the linter recognises (`## Google headlines`, `## Google descriptions`, `## Meta headlines`, `## Meta primary text`, `## LinkedIn headlines`, `## LinkedIn intro`), one variant per bullet, then run `lint.py --mode ad`. It checks the character limits above.
+
 ## 3. Ad patterns
 
 | Pattern | Shape | Best for |

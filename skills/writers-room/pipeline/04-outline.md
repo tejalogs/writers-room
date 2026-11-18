@@ -24,3 +24,7 @@ Blogs also list: the H2s as final wording (real questions), where the answer blo
 - Read only the "bridge out" column top to bottom: no "and then".
 - Every beat has material. A beat with no story, fact or example gets cut or marked `[NEEDS ...]`.
 - Word counts add up to the target length ±10%.
+
+## ⏸ Checkpoint
+
+Unless the user said "autopilot", **stop here**. Show the outline as a short beat list (one line per beat) plus the open `[NEEDS …]` items, and ask "Draft it?" Don't draft until they say yes.

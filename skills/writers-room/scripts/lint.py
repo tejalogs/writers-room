@@ -1,10 +1,13 @@
 #!/usr/bin/env python3
-"""Writers' Room linter: deterministic checks for blogs and podcast scripts.
+"""Writers' Room linter: deterministic checks for blogs, podcasts, video, ads and social posts.
 
 Usage:
-    python3 lint.py FILE --mode blog|podcast|video [--brand brand.json] [--json]
+    python3 lint.py FILE --mode blog|podcast|video|ad|social [--brand brand.json] [--json]
+                    [--fail-under SCORE]
 
-Exit code 1 if any ERROR is found. Standard library only.
+Prints a 0–100 score. Exit code 1 if any ERROR is found or the score is below --fail-under.
+Silence a deliberate exception with <!-- wr-ignore: check-id --> (whole file) or
+<!-- wr-ignore-line: check-id --> (that line). Standard library only.
 """
 from __future__ import annotations
 
@@ -16,6 +19,14 @@ import sys
 from dataclasses import asdict, dataclass
 from pathlib import Path
 from typing import Iterable
+
+from checks_v2 import (apply_ignores, check_repeated_openers, check_spelling, check_unsourced_stats,
+                       check_watch_clusters, score)
+from formats import ad_copy, check_ad, check_social, social_copy
+from wr_text import (NEEDS_RE, Finding, clean_prose, line_of, sentences, split_frontmatter,  # noqa: F401
+                     strip_markers, words)
+
+MODES = ("blog", "podcast", "video", "ad", "social")
 
 SKILL_DIR = Path(__file__).resolve().parent.parent
 DEFAULT_BANNED = SKILL_DIR / "craft" / "banned-phrases.txt"
@@ -54,13 +65,9 @@ THROAT_CLEARING = (
     "hi everyone", "hello everyone", "hey everyone",
 )
 HEDGES = ("very", "really", "just", "actually", "basically", "quite", "simply")
-MARKER_RE = re.compile(r"\[(?:LOOP|CLOSE|REHOOK|PAUSE|EMPHASIS|SLOW|MUSIC|SFX|"
-                       r"COLD OPEN|IDENT|PROMISE|CLOSE)[^\]]*\]", re.I)
 LOOP_RE = re.compile(r"\[LOOP:\s*([\w-]+)\s*\]", re.I)
 CLOSE_RE = re.compile(r"\[CLOSE:\s*([\w-]+)\s*\]", re.I)
 REHOOK_RE = re.compile(r"\[REHOOK\]", re.I)
-NEEDS_RE = re.compile(r"\[NEEDS [A-Z]+[^\]]*\]")
-SPEAKER_RE = re.compile(r"^\s*(?:HOST(?: [A-Z])?|GUEST|[A-Z]{2,}):\s*", re.M)
 
 LIMITS = {
     "blog": {"max_sentence": 35, "first_line": 20, "min_words": 800},
@@ -75,71 +82,6 @@ EMPTY_CELL = frozenset({"", "-", "–", "—", "n/a"})
 VIDEO_HOOK_MAX_S = 3
 VIDEO_TEXT_MAX_WORDS = 8
 VIDEO_VO_MAX_WPS = 2.7
-
-
-@dataclass(frozen=True)
-class Finding:
-    level: str  # ERROR | WARN | INFO
-    check: str
-    message: str
-    line: int | None = None
-
-
-# ---------- text helpers ----------
-
-def split_frontmatter(text: str) -> tuple[dict[str, str], str]:
-    if not text.startswith("---"):
-        return {}, text
-    end = text.find("\n---", 3)
-    if end == -1:
-        return {}, text
-    meta: dict[str, str] = {}
-    for raw in text[3:end].strip().splitlines():
-        if ":" in raw:
-            key, value = raw.split(":", 1)
-            meta[key.strip()] = value.strip().strip('"').strip("'")
-    return meta, text[end + 4:].lstrip("\n")
-
-
-def strip_markers(text: str) -> str:
-    return MARKER_RE.sub("", text)
-
-
-def prose_lines(body: str) -> list[str]:
-    """Lines that are prose (not headings, code fences, frontmatter, tables)."""
-    out, in_code = [], False
-    for line in body.splitlines():
-        if line.strip().startswith("```"):
-            in_code = not in_code
-            continue
-        if in_code or line.lstrip().startswith(("#", "|", ">")):
-            continue
-        out.append(line)
-    return out
-
-
-def clean_prose(body: str) -> str:
-    text = "\n".join(prose_lines(body))
-    text = SPEAKER_RE.sub("", text)
-    text = strip_markers(text)
-    text = NEEDS_RE.sub("", text)
-    text = re.sub(r"[*_`]", "", text)
-    text = re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", text)
-    return text
-
-
-def sentences(text: str) -> list[str]:
-    flat = re.sub(r"\s+", " ", text.replace("- ", " ")).strip()
-    parts = re.split(r"(?<=[.!?])[\"'”’)]*\s+(?=[\"'“‘(]*[A-Z0-9])", flat)
-    return [p.strip() for p in parts if len(p.split()) >= 2]
-
-
-def words(text: str) -> list[str]:
-    return re.findall(r"[A-Za-z0-9'’-]+", text)
-
-
-def line_of(text: str, index: int) -> int:
-    return text.count("\n", 0, index) + 1
 
 
 def load_banned(path: Path) -> tuple[str, ...]:
@@ -225,7 +167,7 @@ def check_rhythm(prose: str, mode: str) -> list[Finding]:
 
 def check_hedges(prose: str) -> list[Finding]:
     toks = [w.lower() for w in words(prose)]
-    if not toks:
+    if len(toks) < 150:  # density is meaningless on a few lines
         return []
     count = sum(1 for t in toks if t in HEDGES)
     per_k = count * 1000 / len(toks)
@@ -427,10 +369,26 @@ def video_copy(body: str) -> str:
     return "\n\n".join(p for p in parts if p.strip())
 
 
-def lint_video(body: str, banned: Iterable[str], brand: dict, watch: Iterable[str]) -> list[Finding]:
-    copy = video_copy(body)
-    return (check_banned(body, banned) + check_brand_terms(body, brand) + check_needs(body)
-            + check_structural_tells(copy) + check_watch_words(copy, watch) + check_video(body))
+def language_checks(raw_body: str, copy: str, banned: Iterable[str], brand: dict,
+                    watch: Iterable[str], stat_text: str | None = None) -> list[Finding]:
+    """Checks every mode shares. English-only ones are skipped when brand.json sets another lang.
+    stat_text is the copy with [NEEDS …] markers kept, so a marked gap counts as sourced."""
+    found = check_brand_terms(raw_body, brand) + check_needs(raw_body)
+    found += check_unsourced_stats(stat_text if stat_text is not None else copy)
+    lang = str(brand.get("lang", "en")).lower()
+    if not lang.startswith("en"):
+        return found + [Finding("INFO", "lang", f"English-only checks skipped (lang={lang})")]
+    watch = tuple(watch)
+    return (found + check_banned(raw_body, banned) + check_structural_tells(copy)
+            + check_watch_words(copy, watch) + check_watch_clusters(copy, watch) + check_hedges(copy)
+            + check_repeated_openers(copy) + check_spelling(copy, brand.get("spelling")))
+
+
+def check_throat_clearing(copy: str) -> list[Finding]:
+    sents = sentences(copy)
+    if sents and sents[0].lower().startswith(THROAT_CLEARING):
+        return [Finding("ERROR", "throat-clearing", f"Opens with throat-clearing: {sents[0][:80]}")]
+    return []
 
 
 # ---------- blog-only ----------
@@ -494,41 +452,49 @@ def check_meta(meta: dict[str, str], body: str, h1: str) -> list[Finding]:
 
 # ---------- runner ----------
 
-def lint(text: str, mode: str, banned: Iterable[str], brand: dict,
-         watch: Iterable[str] = ()) -> list[Finding]:
-    meta, body = split_frontmatter(text)
-    if mode == "video":
-        return lint_video(body, banned, brand, watch)
+def lint_long_form(meta: dict[str, str], body: str, mode: str, banned: Iterable[str], brand: dict,
+                   watch: Iterable[str]) -> list[Finding]:
     prose = clean_prose(body)
-    findings: list[Finding] = []
-    findings += check_banned(body, banned)
-    findings += check_brand_terms(body, brand)
+    findings = language_checks(body, prose, banned, brand, watch, clean_prose(body, keep_needs=True))
     findings += check_first_line(prose, mode)
     findings += check_rhythm(prose, mode)
-    findings += check_hedges(prose)
     findings += check_dashes(prose)
-    findings += check_structural_tells(prose)
     findings += check_tidy_ending(prose)
-    findings += check_watch_words(prose, watch)
     findings += check_specificity(prose)
     findings += check_loops(body)
-    findings += check_needs(body)
     n_words = len(words(prose))
     if n_words < LIMITS[mode]["min_words"]:
         findings.append(Finding("WARN", "length", f"Only {n_words} words"))
     if mode == "podcast":
-        findings += check_rehooks(body)
-        findings += check_podcast_markdown(body)
+        return findings + check_rehooks(body) + check_podcast_markdown(body)
+    return findings + check_blog_structure(meta, body)
+
+
+def lint(text: str, mode: str, banned: Iterable[str], brand: dict,
+         watch: Iterable[str] = ()) -> list[Finding]:
+    meta, body = split_frontmatter(text)
+    if mode == "video":
+        copy = video_copy(body)
+        findings = language_checks(body, copy, banned, brand, watch) + check_video(body)
+    elif mode == "ad":
+        copy = ad_copy(body)
+        findings = language_checks(body, copy, banned, brand, watch) + check_ad(body)
+    elif mode == "social":
+        copy = clean_prose(social_copy(body))
+        with_needs = clean_prose(social_copy(body), keep_needs=True)
+        findings = (language_checks(body, copy, banned, brand, watch, with_needs) + check_throat_clearing(copy)
+                    + check_social(meta, body))
     else:
-        findings += check_blog_structure(meta, body)
-    return findings
+        findings = lint_long_form(meta, body, mode, banned, brand, watch)
+    return apply_ignores(findings, text)
 
 
 def format_report(findings: list[Finding], path: str) -> str:
     order = {"ERROR": 0, "WARN": 1, "INFO": 2}
     rows = sorted(findings, key=lambda f: (order[f.level], f.line or 0))
     counts = {lvl: sum(1 for f in findings if f.level == lvl) for lvl in order}
-    lines = [f"{path}: {counts['ERROR']} errors, {counts['WARN']} warnings, {counts['INFO']} notes"]
+    lines = [f"{path}: score {score(findings)}/100 · {counts['ERROR']} errors, {counts['WARN']} warnings, "
+             f"{counts['INFO']} notes"]
     for f in rows:
         where = f"L{f.line} " if f.line else ""
         lines.append(f"  {f.level:<5} {where}[{f.check}] {f.message}")
@@ -538,7 +504,9 @@ def format_report(findings: list[Finding], path: str) -> str:
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("file", type=Path)
-    parser.add_argument("--mode", choices=("blog", "podcast", "video"), required=True)
+    parser.add_argument("--mode", choices=MODES, required=True)
+    parser.add_argument("--fail-under", type=int, default=None, metavar="SCORE",
+                        help="exit 1 if the 0–100 score is below SCORE (for CI)")
     parser.add_argument("--brand", type=Path, default=None, help="brand.json from a brand pack")
     parser.add_argument("--banned", type=Path, default=DEFAULT_BANNED)
     parser.add_argument("--watch", type=Path, default=DEFAULT_WATCH)
@@ -553,11 +521,13 @@ def main(argv: list[str] | None = None) -> int:
     banned = load_banned(args.banned) + tuple(p.lower() for p in brand.get("extra_banned_phrases", []))
     watch = load_banned(args.watch)  # same one-per-line format
     findings = lint(text, args.mode, banned, brand, watch)
+    total = score(findings)
     if args.json:
-        print(json.dumps([asdict(f) for f in findings], indent=2))
+        print(json.dumps({"score": total, "findings": [asdict(f) for f in findings]}, indent=2))
     else:
         print(format_report(findings, str(args.file)))
-    return 1 if any(f.level == "ERROR" for f in findings) else 0
+    failed_score = args.fail_under is not None and total < args.fail_under
+    return 1 if failed_score or any(f.level == "ERROR" for f in findings) else 0
 
 
 if __name__ == "__main__":

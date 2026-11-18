@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/banner.svg" alt="Writers' Room: an AI agent skill for writing podcast scripts, blogs and social posts with real hooks, narrative and zero slop" width="100%">
+  <img src="assets/banner.svg" alt="Writers' Room: an agent skill for writing podcast scripts, blogs, ads, landing pages and video scripts from real stories" width="100%">
 </p>
 
 <p align="center">
@@ -12,11 +12,11 @@
 
 # Writers' Room: the AI writing skill for podcast scripts, blogs and social posts
 
-**Writers' Room is an open-source agent skill that makes AI write non-fiction people actually finish.** It gives any AI agent (Claude Code, Codex, Cursor, Gemini CLI, Antigravity or a local model) a professional writers' room: craft guides distilled from the great non-fiction writers, an eight-stage pipeline, a critic panel and a code linter that catches generic "AI slop" before it ships.
+Writers' Room is an open-source agent skill for **podcast scripts** (solo, two-host, interview), **blog posts** built for search and AI answer engines (SEO/AEO), **social posts**, **ads** (Google, Meta, LinkedIn), **landing pages** and **video scripts** with shots, voice-over and on-screen text. It runs in Claude Code, Codex, Cursor, Gemini CLI and Antigravity, or with any model you can give a system prompt, including small local ones.
 
-It writes **podcast scripts** (solo, two-host, interview), **blog posts** structured for SEO and AI answer engines (AEO/GEO), **social posts** (LinkedIn, X threads, captions, YouTube descriptions), **ads** (Google, Meta, LinkedIn), **landing pages**, and **video scripts** with shots, voice-over and on-screen text (video ads, Reels, Shorts, TikTok), all built on true stories, never invented ones. Examples cover SaaS, health, finance, travel and careers.
+You ask for a piece. The agent then works the way an editor would make a junior writer work: it collects the real story or the sourced facts first, agrees an angle and an outline with you, drafts from examples, and runs a linter and seven critics before handing you a file. When it has no real story or source for something, it leaves a marked gap (`[NEEDS STORY]`, `[NEEDS SOURCE]`) instead of making one up.
 
-> Most AI writing tools fix the words after the fact. Writers' Room fixes the thinking first: the angle, the hook, the story and the structure. Then it checks the words.
+The craft rules come from non-fiction writers and editors (McPhee, Ira Glass, Zinsser, Orwell, Pinker, Roy Peter Clark and others). The mechanics come from research on how language models write and judge writing. Examples cover SaaS, health, finance, travel and careers.
 
 ---
 
@@ -42,22 +42,20 @@ It writes **podcast scripts** (solo, two-host, interview), **blog posts** struct
 
 ---
 
-## What makes it different
+## What's in it
 
-| | |
+| Part | What it does |
 |---|---|
-| 🎣 **Hooks that earn the next line** | 8 hook types, a hook stack for long pieces, and a 10-hook tournament judged pairwise with order-swapping |
-| 🧵 **Narrative that holds** | Open loops with a ledger, "but/therefore" bridges, re-hooks every ~90 seconds, scenes, callbacks and endings |
-| 🧠 **Thinking before writing** | The Contradiction Hunt, behaviour-first angles, conceptual collisions and six storytelling devices |
-| 🚫 **Zero slop, measured** | The linter flags stock phrases, watch-word density, "not X but Y" contrasts, vague attributions, tidy morals and monotone rhythm |
-| ✅ **Truth by design** | Never invents stories, quotes or stats: gaps become `[NEEDS STORY]`. Critics check frequency claims and invented thoughts |
-| 🔎 **SEO + AEO built in** | Answer blocks, question-shaped H2s, self-contained sections, information gain, FAQ and JSON-LD |
-| 🎙️ **Written for the ear** | Podcast rules for sentence length, signposting, numbers and two-host dynamics, plus a script format with delivery markers |
-| 🎬 **A filmmaker layer for video** | A/V tables with timecodes, a shot vocabulary, devices turned into pictures, sound-off design, AI-video prompts, and a linter that checks hook timing, on-screen text and voice-over pace |
-| 🎯 **Ads and landing pages** | Awareness levels, platform limits, variant matrices, message match, features → outcomes, real-proof rules and ad-policy guardrails for health, finance and jobs |
-| 🏷️ **Any brand, your voice** | Brand packs with voice samples, compliance rules the linter enforces, and a private story bank |
-| 🤏 **Small-model aware** | One stage per call; small models generate while larger models or humans judge, following the evidence |
-| 📈 **Learns what works** | A performance log (clicks, AI citations, listen-through, leads) feeds back into angle and hook choice |
+| **Story bank, interview and research** | Real moments from your calls (anonymised), an interview when the piece is about you, and a claims table with a source and date for every fact |
+| **Angle stage** | The Contradiction Hunt (what people believe vs what happens to them), conceptual collisions, six storytelling devices, and ten hooks compared in pairs |
+| **Structure** | Open loops tracked in a ledger, "but/so" between beats instead of "and then", a re-hook roughly every 90 seconds in audio, callbacks to the opening |
+| **Checkpoints** | The agent stops after the angle and after the outline so you can redirect it before anything is drafted |
+| **Linter** | Scores each draft out of 100. It flags stock phrases, clustered filler words, "not X but Y" contrasts, unsourced statistics, repeated sentence openers, mixed spelling, platform character limits and video timing |
+| **Critic panel** | Seven critics, each checking one thing and quoting the sentence it objects to. The Truth Editor checks every quote, number and "most people…" claim |
+| **Format guides** | Podcast (writing for the ear, two-host rules), blog (search and answer-engine structure), social, ads (awareness levels, policy rules), landing pages, and video (shots, A/V tables, sound-off design) |
+| **Brand packs** | Your voice samples, compliance rules the linter enforces, and a private story bank |
+| **Lite path** | A four-stage version with a one-page cheat sheet for 4–8B local models. The small model writes, code checks, and a larger model or you choose |
+| **Feedback loop** | A performance log (clicks, AI citations, listen-through, leads) that informs the next angle and hook |
 
 ---
 
@@ -66,9 +64,12 @@ It writes **podcast scripts** (solo, two-host, interview), **blog posts** struct
 ```mermaid
 flowchart LR
     A[1 · Brief] --> B[2 · Mine<br/>story bank]
-    B --> C[3 · Angle<br/>Contradiction Hunt<br/>+ hook tournament]
-    C --> D[4 · Outline<br/>loops + payoffs]
-    D --> E[5 · Draft<br/>from examples]
+    B --> R[2b · Research<br/>claims table]
+    R --> C[3 · Angle<br/>Contradiction Hunt<br/>+ hooks]
+    C --> P1{{You pick}}
+    P1 --> D[4 · Outline<br/>loops + payoffs]
+    D --> P2{{You approve}}
+    P2 --> E[5 · Draft<br/>from examples]
     E --> L1{{Lint}}
     L1 --> F[6 · Critic panel<br/>7 critics]
     F --> G[7 · Polish<br/>revise to specifics]
@@ -76,7 +77,7 @@ flowchart LR
     L2 --> H[8 · Package<br/>SEO, schema, social cuts]
 ```
 
-Every stage saves its output, so you can review the angle and outline before a single paragraph is drafted.
+Every stage saves a file. The agent pauses after the angle and after the outline (say "autopilot" to skip the pauses), and ends by telling you which file to open and what's still missing.
 
 ---
 
@@ -155,20 +156,27 @@ The anonymiser strips emails, phones, URLs, postcodes, IDs and names. **Read its
 ```bash
 python3 skills/writers-room/scripts/lint.py draft.md --mode blog --brand .writers-room/brand.json
 python3 skills/writers-room/scripts/lint.py script.md --mode podcast
-python3 skills/writers-room/scripts/lint.py video-ad.md --mode video    # A/V table: hook timing, on-screen text, VO pace
+python3 skills/writers-room/scripts/lint.py video-ad.md --mode video   # hook timing, on-screen text, VO pace
+python3 skills/writers-room/scripts/lint.py ads.md --mode ad           # Google/Meta/LinkedIn character limits
+python3 skills/writers-room/scripts/lint.py post.md --mode social      # post length, the "see more" cut, hashtags
+python3 skills/writers-room/scripts/preserve.py draft.md final.md      # did polishing drop a quote, link or gap marker?
 ```
 
+<!-- wr-ignore: banned-phrase, not-x-but-y, vague-attribution -->
 ```text
-draft.md: 2 errors, 3 warnings, 1 notes
+draft.md: score 61/100 · 2 errors, 6 warnings, 1 notes
   ERROR L1  [throat-clearing] Opens with throat-clearing: In this article, we will explore...
   ERROR L14 [banned-phrase] "it's worth noting" reads as generic/machine-written
   WARN      [not-x-but-y] 3x: "It's not X, it's Y" contrasts: once per piece at most
+  WARN      [unsourced-stat] Statistic with no source in the sentence: About 75% of CVs are never read...
   WARN      [vague-attribution] "studies show": name the source or cut the claim
+  WARN      [repeated-opener] 3+ sentences in a row start with "you": You can...
+  WARN      [watch-cluster] 3 watch words within 150 words (robust, seamless, elevate)
   WARN      [answer-first] "How many jobs should I apply to?": lead with a short direct answer
   INFO      [needs-marker] [NEEDS SOURCE: callback rate]
 ```
 
-Flagged sentences go back through a **revise loop**: rewrite toward a concrete noun, number, named source or the person's own words, never a synonym swap.
+The agent sends each flagged sentence back with one instruction: rewrite it around a concrete noun, a number, a named source or the person's own words. Swapping in a synonym doesn't count. Use `--fail-under 80` in CI, and `<!-- wr-ignore: check-id -->` for a deliberate exception.
 
 ---
 
@@ -187,6 +195,7 @@ skills/writers-room/
 │   ├── examples.md           before/after pairs, model passages, SaaS/health/finance/travel
 │   ├── podcast-structure.md  writing for the ear, episode arc, script format
 │   ├── blog-structure.md     post types, anatomy for scanner/reader/answer engine
+│   ├── lite.md               one-page cheat sheet for small models
 │   ├── social-structure.md   LinkedIn, X, captions, descriptions
 │   ├── ads-structure.md      awareness levels, platform limits, variants, ad policy
 │   ├── landing-page-structure.md  hero, sections, features → outcomes, proof, CTAs
@@ -194,17 +203,17 @@ skills/writers-room/
 │   ├── seo-aeo.md            intent, question mining, quotable chunks, schema
 │   ├── banned-phrases.txt    multi-word phrases (linter ERROR)
 │   └── watch-words.txt       single words (linter WARN by density)
-├── pipeline/                 00 mine transcripts → 08 package
+├── pipeline/                 00 interview / mine transcripts → 02b research → 08 package, plus LITE.md
 ├── evals/                    critic panel, pairwise judge, scenarios, fixture brand
-├── scripts/                  lint.py · anonymize.py · compare.py (stdlib only)
+├── scripts/                  lint.py · preserve.py · anonymize.py · compare.py (stdlib only)
 └── brand-template/           copy this to create your brand pack
 ```
 
 ---
 
-## Built on evidence
+## Why it works this way
 
-The craft comes from the masters of non-fiction. The mechanics come from research:
+The craft rules come from non-fiction writers. These design choices come from research:
 
 - **Banning words in the prompt backfires.** Telling a model what not to say primes it (the "pink elephant" effect), so the skill drafts from examples and lints afterwards. [Antislop, ICLR 2026](https://arxiv.org/abs/2510.15061)
 - **Slop is structural, not just vocabulary.** Contrast patterns and over-used trigrams matter alongside words. [EQ-Bench slop-score](https://github.com/sam-paech/slop-score) · [Wikipedia: Signs of AI writing](https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing)
@@ -225,10 +234,10 @@ The craft comes from the masters of non-fiction. The mechanics come from researc
 ## FAQ
 
 **Is this an AI humanizer?**
-No. Humanizers rewrite finished text to dodge detectors. Writers' Room works upstream on the angle, story, hook and structure, and checks the words at the end. The goal is writing worth reading, not detector evasion.
+No. Humanizers rewrite finished text so detectors miss it. Writers' Room starts earlier, with the story, the angle and the structure, and checks the wording at the end. It doesn't try to beat detectors.
 
 **Does it work with ChatGPT, Gemini or local models?**
-Yes. It's plain Markdown plus two small Python scripts. With small local models, run one stage per call and let a larger model or a human judge the options.
+Yes. It's Markdown plus a few small Python scripts. Small local models should use the lite path (`pipeline/LITE.md`): one stage per call, a one-page cheat sheet, and a larger model or a human picking between options.
 
 **Will it make up statistics or testimonials?**
 It's designed not to. Missing material becomes `[NEEDS STORY]` or `[NEEDS SOURCE]`, and the Truth Editor critic checks quotes, numbers, frequency claims ("most people…") and invented thoughts.
@@ -240,14 +249,14 @@ Yes. There are dedicated guides for text and image ads (Google, Meta, LinkedIn),
 No. The first examples follow one job-hunting story so you can see a single thread, and `examples.md` shows every hook type and rewrite in SaaS, health, finance and travel too.
 
 **Does it support my language?**
-The craft is language-neutral. The banned and watch lists and the linter heuristics are English-only for now; contributions welcome.
+The craft rules apply in any language. The phrase lists and most linter checks are English-only; set `"lang"` in `brand.json` (for example `"es"`) and the linter skips them instead of misfiring. Lists for other languages are welcome as contributions.
 
 ---
 
 ## Contributing
 
-Ideas, new formats, better examples and translations are welcome. Read [CONTRIBUTING.md](CONTRIBUTING.md): changes to craft need evidence or a before/after that proves they help.
+New formats, better examples and phrase lists for other languages are welcome. [CONTRIBUTING.md](CONTRIBUTING.md) explains the bar: a change to the craft rules needs evidence, or a before/after showing it helps.
 
 ## License
 
-[MIT](LICENSE). Use it, fork it, ship it.
+[MIT](LICENSE).

@@ -1,7 +1,7 @@
 {
   "name": "writers-room",
-  "version": "0.2.2",
-  "description": "Write non-fiction podcast scripts, blogs and social posts with world-class hooks, narrative, fresh language and SEO/AEO structure, using a staged pipeline, critic panel and linter.",
+  "version": "0.3.0",
+  "description": "Writes podcast scripts, blogs, social posts, ads, landing pages and video scripts from real stories and sourced facts: a staged pipeline with checkpoints, a critic panel, a slop linter and a lite path for small models.",
   "author": { "name": "tejalogs", "url": "https://github.com/tejalogs" },
   "homepage": "https://github.com/tejalogs/writers-room",
   "repository": "https://github.com/tejalogs/writers-room",

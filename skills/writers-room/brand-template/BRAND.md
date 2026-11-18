@@ -2,7 +2,7 @@
 
 Copy this folder (`BRAND.md`, `brand.json`, `story-bank/`, `evals/`) to `.writers-room/` in your project, or anywhere you like and pass its path. Keep it **private** if the story bank contains customer material.
 
-Answer the eight questions below. Short, concrete answers beat long, vague ones.
+Answer the nine questions below. Short, concrete answers beat long, vague ones.
 
 ## 1. What we do, in one sentence a customer would say
 > ...

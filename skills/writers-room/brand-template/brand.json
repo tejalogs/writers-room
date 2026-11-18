@@ -2,6 +2,7 @@
   "brand_name": "Your Brand",
   "wrong_spellings": ["YourBrand", "Your-Brand"],
   "spelling": "US",
+  "lang": "en",
   "extra_banned_phrases": [],
   "banned_terms": [
     {

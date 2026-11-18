@@ -15,6 +15,9 @@
 7. Blogs, social posts, ads and video A/V tables: strip loop markers. Podcasts: keep all markers (production script).
 8. Write a separate `review.md` for the user (never put notes inside `final.md`: anything above the frontmatter breaks the blog lint and publishing). List every remaining `[NEEDS ...]` item (and remove those markers from the body of a blog `final.md`), every story id used, every claim that needs a fact check, and the ship status (which critics are below 4 and what would lift them).
 
+9. Run `scripts/preserve.py 05-draft.md final.md --review review.md` and resolve anything it reports as lost.
+10. **Hand-off message** (SKILL.md, step 4): what you made and where, the ship status, what's blocking, and one next step.
+
 ## Gate
 
 All seven tests in `craft/principles.md` pass. Write one line per test in `06-critique.md` under "Final checks".

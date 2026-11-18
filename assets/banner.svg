@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 420" width="1280" height="420" role="img" aria-labelledby="t d">
   <title id="t">Writers' Room</title>
-  <desc id="d">An AI agent skill for writing podcast scripts, blogs and social posts with real hooks, narrative and zero slop.</desc>
+  <desc id="d">An agent skill for writing podcast scripts, blogs, ads, landing pages and video scripts from real stories and sourced facts.</desc>
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="#0E1116"/>
@@ -15,8 +15,8 @@
   <rect x="96" y="96" width="6" height="228" rx="3" fill="#F5B841"/>
   <text x="132" y="138" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="20" letter-spacing="4" fill="#F5B841">AN AGENT SKILL FOR NON-FICTION</text>
   <text x="128" y="232" font-family="Georgia, 'Times New Roman', serif" font-size="96" font-weight="700" fill="#FFFFFF">Writers' Room</text>
-  <text x="132" y="290" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="30" fill="#C9D1D9">Podcast scripts, blogs and posts that hold people.</text>
-  <text x="132" y="324" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="22" fill="#8B949E">Hooks · open loops · narrative · zero slop · SEO + AEO · works with any agent</text>
+  <text x="132" y="290" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="30" fill="#C9D1D9">Podcasts, blogs, ads and video from real stories.</text>
+  <text x="132" y="324" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="22" fill="#8B949E">Story first · checkpoints · critic panel · slop linter · SEO + AEO</text>
   <g transform="translate(1010 128)" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="17">
     <rect width="190" height="196" rx="12" fill="#FFFFFF" fill-opacity="0.04" stroke="#FFFFFF" stroke-opacity="0.12"/>
     <text x="20" y="36" fill="#8B949E">01 brief</text>

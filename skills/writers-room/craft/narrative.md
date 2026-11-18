@@ -1,6 +1,6 @@
 # Narrative Craft — telling true stories so they land
 
-Non-fiction that "magics" the reader almost always does so with story. This file covers how to turn a real moment from the story bank into a scene that works.
+Non-fiction that people read to the end usually runs on story. This file covers how to turn a real moment from the story bank into a scene that works.
 
 ## 1. Scene vs summary
 
@@ -87,4 +87,4 @@ Feature-first writing ("we have AI interview prep, career mapping, skill develop
 - **Frequency words need evidence.** "Most people", "almost nobody", "everyone" are statistics in disguise. Cite, soften to what you know, or cut.
 - Anonymise fully; change nothing that alters meaning.
 - No composites presented as one person. If a pattern comes from many people, say so: "Of the 40 people we spoke to who..."
-- Outcomes only as reported. If you don't know how it ended, say that: it's often more honest and more powerful.
+- Outcomes only as reported. If you don't know how it ended, say so. An honest "we don't know what happened next" is better than a tidy ending you made up.

@@ -48,6 +48,10 @@ The angle is the most important decision in the piece. A great angle with averag
 4. Write 10 hooks for the winning angle, using at least 5 hook types, or as many types as the material honestly supports (minimum 3; see `craft/hooks.md` rule 6). Run the pairwise tournament. Keep the top 2.
 5. Write the **payoff line**: the sentence near the end that pays off the hook's promise.
 
+## ⏸ Checkpoint
+
+Unless the user said "autopilot", **stop here**. Show them the spine, the top 2–3 angles (one line each, with the story or fact behind it) and the top 2 hooks, and ask which to take. Don't outline until they answer.
+
 ## Output format
 
 ```markdown

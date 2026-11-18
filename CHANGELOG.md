@@ -1,5 +1,27 @@
 # Changelog
 
+## v0.3.0 — 2026-11-18
+
+From a fresh-eyes review of the repo and a scan of 13 related projects (Vale, proselint, slopless, STORM, humanizer, avoid-ai-writing, voiceprint, WritingBench and others).
+
+### Added
+- **Checkpoints:** the agent stops after the angle (you pick) and after the outline (you approve). "Autopilot" skips the pauses and records each choice in `review.md`.
+- **Hand-off message:** every run ends with which file to open, the ship status, what's blocking and one next step.
+- **Per-stage loading:** `SKILL.md` now lists exactly which files each stage loads, instead of loading all the craft files up front.
+- **Lite path** (`pipeline/LITE.md` and `craft/lite.md`): four stages and a one-page cheat sheet for 4–8B local models. The small model writes, code checks, and a larger model or the user chooses.
+- **Research stage** (`pipeline/02b-research.md`): reader and sceptic perspectives, a claims table with source, date and confidence for every fact, and an unused-material check. Also **no-story mode** for explainers, how-tos, comparisons and data posts.
+- **Linter v2:**
+  - `--mode ad` (Google, Meta and LinkedIn character limits, headline count, duplicates) and `--mode social` (per-platform post limits, the "see more" cut, hashtags, lazy closing questions).
+  - New checks: unsourced statistics, repeated sentence openers, UK/US spelling consistency, watch words clustering in a 150-word window.
+  - A score out of 100 with `--fail-under` for CI; `<!-- wr-ignore -->` and `<!-- wr-ignore-line -->` comments for deliberate exceptions; a `lang` setting that switches off the English-only checks.
+  - Split into small modules (`wr_text.py`, `checks_v2.py`, `formats.py`).
+- **`preserve.py`:** checks that polishing didn't drop a real quote, a `[NEEDS …]` marker or a link.
+- 26 new tests (78 in total).
+
+### Changed
+- README, banner and plugin descriptions rewritten without marketing filler. Gone: "actually finish", "world-class", the emoji feature grid, "ship it".
+- The brand template says nine questions, matching its nine sections.
+
 ## v0.2.2 — 2026-11-13
 
 From an end-to-end audit (fresh agents running the portfolio, no-material and video-ad scenarios):
