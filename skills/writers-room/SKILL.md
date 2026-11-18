@@ -54,7 +54,7 @@ Don't load every craft file up front. Load what the stage lists, plus the previo
 | 1. Brief | `01-brief.md` | `BRAND.md` §1–5, the format file | `01-brief.md` |
 | 2. Mine | `02-mine.md` | story bank (approved only) | `02-material.md` |
 | 2b. Research | `02b-research.md` | `craft/seo-aeo.md` §1 (blogs) | `02b-research.md` |
-| 3. Angle ⏸ | `03-angle.md` | `craft/principles.md`, `craft/hooks.md`, brand `evals/what-works.md` | `03-angle.md` |
+| 3. Angle ⏸ | `03-angle.md` | `craft/principles.md`, `craft/hooks.md`, brand `evals/what-works.md`; after writing hooks, `evals/hook-gate.md` | `03-angle.md` + `hooks.md` |
 | 4. Outline ⏸ | `04-outline.md` | format file, `craft/bridges-and-loops.md`, `craft/narrative.md`, `craft/seo-aeo.md` (blogs) | `04-outline.md` |
 | 5. Draft | `05-draft.md` | `BRAND.md` voice samples, the matching sections of `craft/examples.md` | `05-draft.md` |
 | 6. Critique | `06-critique.md` | `evals/critic-panel.md`, `craft/principles.md` (tests) | `06-critique.md` |
@@ -79,7 +79,7 @@ If the user says "autopilot", "no checkpoints" or "just write it", skip the paus
 ```bash
 python3 <skill-dir>/scripts/lint.py <out>/05-draft.md --mode <mode> --brand <brand-dir>/brand.json
 ```
-Modes: `blog` (also landing pages), `podcast`, `video` (A/V table), `ad` and `social`. After polishing, check nothing real was lost:
+Modes: `blog` (also landing pages), `podcast`, `video` (A/V table), `ad`, `social`, and `hooks` (a bullet list of hooks from stage 3). Every mode checks the opening for dead hooks. After polishing, check nothing real was lost:
 ```bash
 python3 <skill-dir>/scripts/preserve.py <out>/05-draft.md <out>/final.md --review <out>/review.md
 ```

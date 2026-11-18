@@ -11,8 +11,10 @@ Everything a small model needs to write well, on one page. The full craft files 
 - Name the belief the reader holds and the truth that replaces it.
 
 ## The first line
-- Start with a real moment, a surprising fact, a flat contradiction or a question about the reader.
-- Never start with a greeting, a definition, "In this article" or "Have you ever".
+- It must carry an **anchor** from your material: a number, a name, someone's exact words, or the claim the piece will prove. Note where it came from.
+- Put the anchor in the first five words.
+- Start at the moment something changed, not the routine before it.
+- Use a scene only if it really happened and has a detail only that story has.
 - The first line must make the reader need the second.
 
 ## Moving through the piece

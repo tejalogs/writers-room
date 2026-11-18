@@ -23,10 +23,11 @@ from typing import Iterable
 from checks_v2 import (apply_ignores, check_repeated_openers, check_spelling, check_unsourced_stats,
                        check_watch_clusters, score)
 from formats import ad_copy, check_ad, check_social, social_copy
+from hooks_check import check_hook, check_hook_list, parse_hook_list
 from wr_text import (NEEDS_RE, Finding, clean_prose, line_of, sentences, split_frontmatter,  # noqa: F401
                      strip_markers, words)
 
-MODES = ("blog", "podcast", "video", "ad", "social")
+MODES = ("blog", "podcast", "video", "ad", "social", "hooks")
 
 SKILL_DIR = Path(__file__).resolve().parent.parent
 DEFAULT_BANNED = SKILL_DIR / "craft" / "banned-phrases.txt"
@@ -457,6 +458,7 @@ def lint_long_form(meta: dict[str, str], body: str, mode: str, banned: Iterable[
     prose = clean_prose(body)
     findings = language_checks(body, prose, banned, brand, watch, clean_prose(body, keep_needs=True))
     findings += check_first_line(prose, mode)
+    findings += check_hook(prose, label="Opening")
     findings += check_rhythm(prose, mode)
     findings += check_dashes(prose)
     findings += check_tidy_ending(prose)
@@ -475,7 +477,13 @@ def lint(text: str, mode: str, banned: Iterable[str], brand: dict,
     meta, body = split_frontmatter(text)
     if mode == "video":
         copy = video_copy(body)
-        findings = language_checks(body, copy, banned, brand, watch) + check_video(body)
+        shots = parse_shots(body)
+        opening = f"{_vo_text(shots[0].audio)} {shots[0].text}" if shots else ""
+        findings = (language_checks(body, copy, banned, brand, watch) + check_video(body)
+                    + check_hook(opening, label="First shot"))
+    elif mode == "hooks":
+        copy = "\n\n".join(parse_hook_list(body))
+        findings = language_checks(body, copy, banned, brand, watch) + check_hook_list(body)
     elif mode == "ad":
         copy = ad_copy(body)
         findings = language_checks(body, copy, banned, brand, watch) + check_ad(body)
@@ -483,6 +491,7 @@ def lint(text: str, mode: str, banned: Iterable[str], brand: dict,
         copy = clean_prose(social_copy(body))
         with_needs = clean_prose(social_copy(body), keep_needs=True)
         findings = (language_checks(body, copy, banned, brand, watch, with_needs) + check_throat_clearing(copy)
+                    + check_hook(copy, label="First line")
                     + check_social(meta, body))
     else:
         findings = lint_long_form(meta, body, mode, banned, brand, watch)

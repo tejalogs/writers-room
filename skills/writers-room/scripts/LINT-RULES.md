@@ -26,6 +26,13 @@
 
 Fix flagged sentences by rewriting toward a specific detail (a number, a name, a source, the person's own words), never by swapping in a synonym.
 
+## Hooks (every mode checks the opening; `--mode hooks` checks a bullet list)
+- ERROR (`dead-hook`): the opening asks the reader to imagine or picture a scene, puts "you" in a made-up scene, or opens with a stock move ("We've all been there", "In a world where", "Did you know", "Let's be honest"…).
+- WARN (`stock-scene`): the scene is built from props every opening uses (coffee, laptop, alarm, rain, morning, screen…) with no number, name or quote; or it opens on a routine action ("I opened…", "I woke…") with nothing specific.
+- WARN (`vague-hook`): no anchor (number, name, quote or concrete claim) and vague words (feel, struggle, life, journey, something…).
+- WARN (`hook-length`, hooks mode): a hook over 25 words.
+- The fix is never a synonym: give the hook an anchor from the material. See `evals/hook-gate.md`.
+
 ## Blog and podcast (long form)
 - ERROR: opening with throat-clearing ("Welcome to", "In this episode/article", "Today we", "Have you ever", "In today's", "Let's dive", greetings).
 - ERROR: a `[LOOP: id]` with no matching `[CLOSE: id]` after it.

@@ -2,6 +2,30 @@
 
 A hook is a **promise plus a gap**. It promises something the audience wants and opens a gap they need closed. The gap must be specific to this piece: if the hook would work on any piece about the topic, it fails the competitor swap test.
 
+## Every hook carries an anchor
+
+An **anchor** is one concrete thing taken from your material that only this piece has:
+- a **number** from the story bank or the research table ("212 applications", "41 of 300");
+- a **name, place or object** from a real story ("Column F", "the 6:14 bus");
+- someone's **exact words** ("'It felt like begging. I sent it anyway.'");
+- a **specific claim** the piece will prove ("Applying to more jobs is making you less hireable").
+
+Write the anchor's source after each hook: `(S-T001)`, `(claim 3)`, `(spine)`. If you can't name a source, the hook isn't ready.
+
+- `(spine)` is valid only for a contrarian claim, a named enemy or a question that the piece itself will argue and prove. It never covers a number, a fact or a "most…" claim; those need a story id or a claims-table row.
+- A hook whose anchor is still a `[NEEDS SOURCE]` placeholder can be listed, but it can't be a finalist until the source is found.
+
+Atmosphere is not an anchor. Morning light, a coffee cup, a laptop opening and a deep breath appear in thousands of openings, so they tell the reader nothing about this one.
+
+## Pick the type from your material
+
+| What you have | Strongest hook types |
+|---|---|
+| A real moment (story bank or interview) | Cold open (1), overheard line (4), confession (7, only the author's own) |
+| A surprising number or fact (research table) | Specific number (3), contrarian claim (2) |
+| A belief you overturn, but no story yet | Contrarian claim (2), named enemy (8), implicating question (6) |
+| Two real people with different outcomes | Two-people contrast (5) |
+
 ## The eight hook types
 
 Each has a mechanism (why it works), a use case and a failure mode. Examples are illustrative patterns; in real pieces, the details must come from the story bank or a cited source. The examples below come from one domain (careers); `examples.md` §3.1 shows all eight types in SaaS, health, finance and travel.
@@ -10,8 +34,9 @@ Each has a mechanism (why it works), a use case and a failure mode. Examples are
 Start in the middle of a real moment, at the point of highest tension.
 > "At 11:40 on a Sunday night she clicked submit for the 212th time, then opened a new tab and typed: *what is wrong with me.*"
 - **Mechanism:** a story in progress triggers the need to know what happens next.
-- **Use when:** you have a strong story-bank moment. Best default for podcasts.
-- **Fails when:** the scene is generic ("Imagine you're applying for jobs...") or invented. Never "imagine". Use a real moment.
+- **Use only when:** you have a real moment from the story bank or an interview. Cite it. Best default for podcasts when you have one.
+- **The detail test:** the scene needs at least one detail only that story has (the 212th time, the search typed into a new tab). If every detail in your scene could appear in someone else's story (coffee, a laptop, the alarm), it isn't a scene yet. Use a different hook type.
+- **Never build a scene the material doesn't contain**, including "you" scenes the reader is asked to picture. Starting with the moment itself is always stronger than asking the reader to imagine one.
 
 ### 2. The contrarian claim
 State the opposite of what the audience believes, flatly, without hedging.
@@ -55,11 +80,14 @@ Name a belief, habit or system as the antagonist.
 ## Hook rules
 
 1. **First line:** 15 words or fewer for audio, 20 for text.
-2. **No throat-clearing.** Never open with: "Welcome to", "In this episode/article", "Today we're going to", "Have you ever", "In today's", "Let's dive in", a definition, or a greeting.
-3. **Pay it off.** Every hook's promise must be explicitly paid off. Write down the payoff line before you write the hook.
-4. **The brand never appears in the hook.**
-5. **Tournament every time:** write 10 hooks using at least 5 different types, then pick the winner with `evals/pairwise-judge.md`. Never ship your first hook.
-6. **Skip types your material can't support.** No second person in the story bank means no two-people contrast; no author experience on record means no confession. Fill the 10 with more of the types you *can* support, and note which you skipped and why.
+2. **Lead with the anchor.** Put the number, the name, the quote or the claim in the first five words if you can. Context comes after, if at all.
+3. **Start at the change.** Open on the moment something shifted (the rejection, the number, the realisation), not on the routine before it.
+4. **Pay it off.** Every hook's promise must be explicitly paid off. Write down the payoff line before you write the hook.
+5. **The brand never appears in the hook.**
+6. **Tournament every time:** write 10 hooks using at least 5 different types (or as many as the material supports), each tagged with its anchor's source. Run `lint.py hooks.md --mode hooks`, drop every hook it flags, then pick the winner with `evals/pairwise-judge.md`. Never ship your first hook.
+7. **Skip types your material can't support.** No second person in the story bank means no two-people contrast; no author experience on record means no confession. Fill the 10 with more of the types you *can* support, and note which you skipped and why.
+
+After the tournament, run the finalists through `evals/hook-gate.md`.
 
 ## The hook stack (longer pieces)
 

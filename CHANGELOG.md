@@ -1,5 +1,25 @@
 # Changelog
 
+## Unreleased
+
+Hooks were the weakest part in user tests. With no real story to hand, models opened with "Imagine you're walking…" or "I opened my laptop, coffee in hand…": scenes built from props that tell the reader nothing.
+
+### Added
+- **Hook checker** (`scripts/hooks_check.py`), run on the opening in every linter mode:
+  - `dead-hook` (ERROR): "imagine / picture this" openings, made-up "you" scenes, stock moves such as "we've all been there" and "in a world where".
+  - `stock-scene` (WARN): scenes built from coffee, laptops, alarms and screens with no number, name or quote; routine openings ("I opened…").
+  - `vague-hook` (WARN): no anchor plus vague words.
+  - `placeholder-hook` (WARN): an anchor that's still a `[NEEDS SOURCE]` marker.
+- **`--mode hooks`** lints the stage-3 list of ten hooks, one per bullet.
+- **`evals/hook-gate.md`:** six questions per finalist (anchor, swap, truth, change, gap, payoff), dead patterns with the fix for each, and what to do when every hook fails.
+
+### Changed
+- **Every hook now carries an anchor** (a number, name, exact quote or the claim the piece proves) and a source tag. A table maps your material to the hook types it can support. Cold opens are allowed only from a real moment with a detail only that story has.
+- The phrase list moved out of `hooks.md` and into the linter and the gate, so writing instructions stay positive.
+- The lite path and the angle stage both lint hooks before picking.
+
+Tested with two fresh agents (one with story material, one with none). Neither produced an "imagine" or stock-prop hook. The linter scored the story hooks 100/100 and caught the one planted dead hook. 96 tests.
+
 ## v0.3.0 — 2026-11-18
 
 From a fresh-eyes review of the repo and a scan of 13 related projects (Vale, proselint, slopless, STORM, humanizer, avoid-ai-writing, voiceprint, WritingBench and others).

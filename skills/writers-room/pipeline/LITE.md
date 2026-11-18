@@ -26,8 +26,10 @@ Missing: [NEEDS STORY/SOURCE: ...]
 **Load:** this file, `craft/lite.md`, `brief.md`.
 
 Write `plan.md`:
-1. Five first lines, each a different type: real moment · surprising fact · contradiction · question about the reader · someone's exact words. Skip a type if the material can't support it.
+1. Five first lines, each a different type: real moment · surprising fact · contradiction · question about the reader · someone's exact words. Skip a type if the material can't support it. Each line carries an anchor and a source tag, e.g. `212 applications. 198 "no reply". (S-T001)`.
 2. A plan of 4–7 beats, one line each: `<what happens> | <material> | but/so → next beat`.
+
+Save the first lines as a bullet list in `hooks.md` and run `python3 <skill-dir>/scripts/lint.py hooks.md --mode hooks`. Replace any line it flags.
 
 **Then stop.** The user (or a larger model) picks the first line and approves the plan.
 

@@ -159,6 +159,7 @@ python3 skills/writers-room/scripts/lint.py script.md --mode podcast
 python3 skills/writers-room/scripts/lint.py video-ad.md --mode video   # hook timing, on-screen text, VO pace
 python3 skills/writers-room/scripts/lint.py ads.md --mode ad           # Google/Meta/LinkedIn character limits
 python3 skills/writers-room/scripts/lint.py post.md --mode social      # post length, the "see more" cut, hashtags
+python3 skills/writers-room/scripts/lint.py hooks.md --mode hooks      # dead hooks: "imagine…", coffee-and-laptop scenes, no anchor
 python3 skills/writers-room/scripts/preserve.py draft.md final.md      # did polishing drop a quote, link or gap marker?
 ```
 

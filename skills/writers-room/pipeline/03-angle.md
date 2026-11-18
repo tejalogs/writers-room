@@ -45,7 +45,7 @@ The angle is the most important decision in the piece. A great angle with averag
 
 2. Run the **competitor swap test** on each. Delete any a competitor could publish.
 3. Pick the winner with `evals/pairwise-judge.md` (criterion: "Which would make a busy, sceptical person stop and need to know more, *and* can our material actually prove it?").
-4. Write 10 hooks for the winning angle, using at least 5 hook types, or as many types as the material honestly supports (minimum 3; see `craft/hooks.md` rule 6). Run the pairwise tournament. Keep the top 2.
+4. Write 10 hooks for the winning angle, using at least 5 hook types, or as many types as the material honestly supports (minimum 3; see `craft/hooks.md`). **Each hook carries an anchor and a source tag**, e.g. `212 applications. 198 "no reply". (S-T001)`. Save them as a bullet list in `hooks.md`, run `lint.py hooks.md --mode hooks`, and drop what it flags. Run the finalists through `evals/hook-gate.md`. Run the pairwise tournament. Keep the top 2.
 5. Write the **payoff line**: the sentence near the end that pays off the hook's promise.
 
 ## ⏸ Checkpoint
