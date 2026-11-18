@@ -1,6 +1,6 @@
 {
   "name": "writers-room",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Writes podcast scripts, blogs, social posts, ads, landing pages and video scripts from real stories and sourced facts: a staged pipeline with checkpoints, a critic panel, a slop linter and a lite path for small models.",
   "author": { "name": "tejalogs", "url": "https://github.com/tejalogs" },
   "homepage": "https://github.com/tejalogs/writers-room",

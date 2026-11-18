@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## v0.3.1 — 2026-11-18
 
 Hooks were the weakest part in user tests. With no real story to hand, models opened with "Imagine you're walking…" or "I opened my laptop, coffee in hand…": scenes built from props that tell the reader nothing.
 
